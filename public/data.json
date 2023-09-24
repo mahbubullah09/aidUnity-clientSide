@@ -1,0 +1,140 @@
+[
+    {
+      "id": 1,
+      "picture": "https://i.ibb.co/xJR1LDp/Health.png",
+      "title": "Support Medical Relief",
+      "category": "Health",
+      "card_bg": "#0052FF26",
+      "category_bg": "#0052FF33",
+      "text_color": "#0052FF",
+      "price": 600,
+      "description": "Your generous donation will help provide critical medical relief to those in need. We are committed to delivering essential medical supplies, funding life-saving treatments, and supporting healthcare facilities in underserved communities. Together, we can make a significant impact on improving the health and well-being of vulnerable individuals and families. Your contribution matters, and every dollar brings us one step closer to a healthier world.\n\nPrice: 250"
+    },
+    {
+        "id": 2,
+        "picture": "https://i.ibb.co/qxJC4hv/Education.png",
+        "title": "Empower Education",
+        "category": "Education",
+        "card_bg": "#FF444A26",
+        "category_bg": "#FF444A33",
+        "text_color": "#FF444A",
+        "price": 350,
+        "description": "Invest in education and empower future generations. Your contribution will support access to quality education for underprivileged children and young adults. We believe that education is the key to breaking the cycle of poverty and creating opportunities for a brighter future. Join us in making a positive impact by providing educational resources, scholarships, and mentorship programs. Your donation can be the spark that ignites a lifelong love for learning.\n\nPrice: 500"
+      },
+      {
+        "id": 3,
+        "picture": "https://i.ibb.co/4Z5mKp1/Clothing.png",
+        "title": "Warmth for the Homeless",
+        "category": "Clothing",
+        "card_bg": "#79C23F26",
+        "category_bg": "#79C23F33",
+        "text_color": "#79C23F",
+        "price": 480,
+        "description": "Donate warm clothing to provide comfort to homeless individuals during the cold winter months. Your contribution helps us distribute coats, blankets, and winter essentials to those living on the streets. Every winter, many homeless individuals struggle to stay warm. Your kindness can make a significant difference in their lives by providing them with warmth and hope. Your donation can be a lifeline to those facing the harsh realities of homelessness.\n\nPrice: 50"
+      },
+      {
+        "id": 4,
+        "picture": "https://i.ibb.co/7RqCV1N/Food.png",
+        "title": "Feed the Hungry",
+        "category": "Food",
+        "card_bg": "#F8714726",
+        "category_bg": "#F8714733",
+        "text_color": "#F87147",
+        "price": 200,
+        "description": "Join us in the fight against hunger. Your donation to our food bank program will help provide nutritious meals to individuals and families facing food insecurity. No one should go to bed hungry, and your support can make a significant difference in alleviating hunger in our community. Together, we can nourish and strengthen those in need. Your donation can be a source of hope for those struggling with food insecurity.\n\nPrice: 200"
+      },
+      {
+        "id": 5,
+        "picture": "https://i.ibb.co/7RqCV1N/Food.png",
+        "title": "Meals for Children",
+        "category": "Food",
+        "card_bg": "#F8714726",
+        "category_bg": "#F8714733",
+        "text_color": "#F87147",
+        "price": 199,
+        "description": "Help us provide daily meals to children living in poverty-stricken areas. Your donation ensures that children have access to nutritious food, allowing them to grow and thrive. Malnutrition is a significant concern in many communities, and your contribution can change lives by ensuring that children receive the sustenance they need to succeed. Your support can be a lifeline to hungry children in need.\n\nPrice: 300"
+      },
+      {
+        "id": 6,
+        "picture": "https://i.ibb.co/4Z5mKp1/Clothing.png",
+        "title": "Dress for Success",
+        "category": "Clothing",
+        "card_bg": "#79C23F26",
+        "category_bg": "#79C23F33",
+        "text_color": "#79C23F",
+        "price": 360,
+        "description": "Support individuals in need of professional attire to secure employment opportunities. Your donation contributes to our Dress for Success program, providing job seekers with business attire and interview preparation. We believe that everyone deserves a chance to achieve their career goals, and your contribution can help break down employment barriers. Your support can be the key to transforming lives and helping individuals achieve self-sufficiency.\n\nPrice: 100"
+      },
+      {
+        "id": 7,
+        "picture": "https://i.ibb.co/qxJC4hv/Education.png",
+        "title": "Bridge the Digital Divide",
+        "category": "Education",
+        "card_bg": "#FF444A26",
+        "category_bg": "#FF444A33",
+        "text_color": "#FF444A",
+        "price": 520,
+        "description": "Help us bridge the digital divide by providing computers and internet access to students in underserved communities. The COVID-19 pandemic has highlighted the importance of online learning, and your donation can ensure that no child is left behind. Your contribution will empower students with the tools they need to succeed in a digital world. Together, we can make education accessible to all.\n\nPrice: 350"
+      },
+    {
+      "id": 8,
+      "picture": "https://i.ibb.co/xJR1LDp/Health.png",
+      "title": "Fund Research for a Cure",
+      "category": "Health",
+      "card_bg": "#0052FF26",
+      "category_bg": "#0052FF33",
+      "text_color": "#0052FF",
+      "price": 450,
+      "description": "Join us in funding groundbreaking research to find cures for life-threatening diseases. Your donation supports scientists, researchers, and medical experts in their quest to discover innovative treatments and ultimately find a cure. We believe that together, we can conquer diseases that affect millions of lives. Your contribution is a beacon of hope in the world of medical research.\n\nPrice: 300"
+    },
+    {
+      "id": 9,
+      "picture": "https://i.ibb.co/xJR1LDp/Health.png",
+      "title": "Provide Healthcare Access",
+      "category": "Health",
+      "card_bg": "#0052FF26",
+      "category_bg": "#0052FF33",
+      "text_color": "#0052FF",
+      "price": 300,
+      "description": "Make quality healthcare accessible to everyone by supporting our initiative. Your donation helps establish medical clinics, provide free check-ups, and offer medicines to those without access to basic healthcare services. We believe that health is a fundamental human right, and your contribution can save lives and alleviate suffering in underserved communities. Your support can be a lifeline to those in need of medical care.\n\nPrice: 220"
+    },
+    
+  
+    {
+      "id": 10,
+      "picture": "https://i.ibb.co/qxJC4hv/Education.png",
+      "title": "Support Teacher Training",
+      "category": "Education",
+      "card_bg": "#FF444A26",
+      "category_bg": "#FF444A33",
+      "text_color": "#FF444A",
+      "price": 299,
+      "description": "Invest in the professional development of educators. Your donation supports teacher training programs, workshops, and resources to enhance the quality of education. Well-trained teachers are the cornerstone of a strong education system. Your contribution will empower teachers to inspire and educate the next generation of leaders and innovators. Your support can be the catalyst for educational excellence.\n\nPrice: 280"
+    },
+   
+   
+    {
+      "id": 11,
+      "picture": "https://i.ibb.co/4Z5mKp1/Clothing.png",
+      "title": "Clothe a Child's Future",
+      "card_bg": "#79C23F26",
+      "category_bg": "#79C23F33",
+      "text_color": "#79C23F",
+      "price": 349,
+      "description": "Give the gift of clothing to children in need. Your donation supports our initiative to provide school uniforms, shoes, and clothing essentials to disadvantaged children. Access to proper clothing can boost a child's self-esteem and confidence, ensuring they have the opportunity to focus on their education and build a brighter future. Your contribution matters, and it can be the foundation for a child's success.\n\nPrice: 80"
+    },
+    
+   
+    {
+      "id": 12,
+      "picture": "https://i.ibb.co/7RqCV1N/Food.png",
+      "title": "Emergency Food Relief",
+      "category": "Food",
+      "card_bg": "#F8714726",
+      "category_bg": "#F8714733",
+      "text_color": "#F87147",
+      "price": 449,
+      "description": "Support our emergency food relief efforts to assist families facing crises such as natural disasters or economic hardships. Your donation provides immediate relief by supplying essential food items to those in urgent need. In times of crisis, your generosity can make a significant impact on ensuring that families have access to sustenance during their most challenging moments. Your donation can be a lifeline to families in crisis.\n\nPrice: 250"
+    }
+  ]
+ 
