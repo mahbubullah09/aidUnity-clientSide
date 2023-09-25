@@ -8,7 +8,7 @@ const SingleCard = ({ card }) => {
    <div>
     <Link to={`/details/${id}`}>
     <div className=" cursor-pointer">
-      <div style={{ background:card_bg }} className={`card card-compact  shadow-xl  bg-opacity-10`} >
+      <div style={{ background:card_bg,  color:text_color}} className={`card card-compact  shadow-xl  bg-opacity-10`} >
         <figure>
           <img 
             src={picture}
