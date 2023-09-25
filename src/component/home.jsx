@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import Banner from "./banner";
+
 import Cards from "./cards";
 import { useState } from "react";
 
@@ -58,7 +58,7 @@ const Home = () => {
         </div>
       </div>
         </div>
-      </div>
+      </div >
            {
             search ? <Cards cardsData={filterData}></Cards>
             : <Cards cardsData={cardsData}></Cards>

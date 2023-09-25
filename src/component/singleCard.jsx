@@ -7,7 +7,7 @@ const SingleCard = ({ card }) => {
   return (
    <div>
     <Link to={`/details/${id}`}>
-    <div className=" cursor-pointer">
+    <div className=" cursor-pointer ">
       <div style={{ background:card_bg,  color:text_color}} className={`card card-compact  shadow-xl  bg-opacity-10`} >
         <figure>
           <img 
@@ -15,8 +15,8 @@ const SingleCard = ({ card }) => {
             alt=""
           />
         </figure>
-        <div className="card-body">
-        <div className="card-actions ">
+        <div className="card-body h-32">
+        <div className="card-actions  ">
             <h2 style={{ backgroundColor:category_bg }} className= {` py-1 px-2 rounded-md font-semibold`}>{category}</h2>
           </div>
           <h2 style={{color:text_color }} className={`card-title `}>{title}</h2>
