@@ -5,7 +5,7 @@ import Cards from "./cards";
 
 const Home = () => {
     const cardsData = useLoaderData();
-    console.log(cardsData);
+ 
     return (
         <div>
            <Banner></Banner>

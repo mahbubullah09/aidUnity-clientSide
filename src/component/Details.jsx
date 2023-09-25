@@ -9,16 +9,16 @@ const Details = () => {
 
 
     const {id} = useParams();
-    console.log(id);
+   
     const details = useLoaderData();
-    console.log(details);
+    
 
     useEffect(()=>{
 
         const findData = details?.find(details=> details.id == id)
         setData(findData)
     },[id, details])
-    console.log(data);
+    
 
 
     return (

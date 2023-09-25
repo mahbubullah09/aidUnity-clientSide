@@ -1,8 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 
+
+
+
 const MainLayout = () => {
   return (
-    <div>
+    <div >
       <section >
         <div className="pt-4  ">
         <div className=" flex justify-between items-center max-w-5xl mx-auto">
