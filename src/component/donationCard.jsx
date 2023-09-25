@@ -1,8 +1,9 @@
-import React from "react";
+
 
 const DonationCard = ({ data }) => {
   const { picture, title, category, card_bg, category_bg, text_color, price } =
     data || {};
+    
 
   return (
     <div>
@@ -34,6 +35,8 @@ const DonationCard = ({ data }) => {
           </div>
         </div>
       </div>
+
+     
     </div>
   );
 };
