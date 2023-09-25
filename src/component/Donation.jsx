@@ -27,7 +27,9 @@ const Donation = () => {
     return (
         <div className='my-8' >
             {
-                noData ? <p>{noData}</p> 
+                noData ? <div className='  text-center h-screen my-60'>
+                    <p className='   text-6xl font-bold'>{noData}</p> 
+                </div>
                 : <div>
                     <div className='grid grid-cols-2 gap-4'>
                     {
@@ -37,8 +39,11 @@ const Donation = () => {
                      
                 </div>
                 <div className=' text-center my-10'>
-            <button onClick={()=> isClick(!click)} className=" rounded bg-[#009444] text-white py-2 px-4  mx-auto">
-               {!click ? 'Show All' : 'Show less'}
+            <button onClick={()=> isClick(true)}  className={
+              click ?  " hidden" : " rounded bg-[#009444] text-white py-2 px-4  mx-auto " 
+            }>
+                Show all
+         
                 </button>
             </div>
 

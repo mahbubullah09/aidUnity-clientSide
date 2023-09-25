@@ -7,7 +7,7 @@ const DonationCard = ({ data }) => {
   return (
     <div>
       <div>
-        <div style={{ background: card_bg }} className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div style={{ background: card_bg }} className="relative flex w-full  flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
           <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
             <img
               src={picture}
@@ -24,7 +24,7 @@ const DonationCard = ({ data }) => {
                 {category}
               </h2>
             </div>
-            <h2 className={`card-title my-2 `}>{title}</h2>
+            <h2 className={` text-[18px] font-semibold my-2  text-[#0B0B0B]`}>{title}</h2>
             <div style={{ color: text_color }} className=" flex items-center  font-semibold"> <BiDollar></BiDollar> {price}</div>
             <div>
               <button
