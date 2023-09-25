@@ -10,10 +10,11 @@ const Statistic = () => {
 
     const data= useLoaderData()
     const [donation, setDonation] = useState([]);
+    const [donationLength, setDonationLength] = useState(0);
 
 
 let totalDonation;
-let myDonation = 0;
+let myDonation =0;
  if (donation){
     totalDonation= data?.length - donation?.length  ;
     myDonation = donation.length;
@@ -28,7 +29,7 @@ let myDonation = 0;
 
         
           setDonation(donatesItem);
-          setDonation(myDonation)
+          setDonationLength(myDonation)
        
       }, [myDonation]);
   
@@ -36,7 +37,7 @@ let myDonation = 0;
 
 
 
-    const donationArray = [totalDonation, donation ];
+    const donationArray = [totalDonation, donationLength ];
     console.log(donationArray);
       
    
