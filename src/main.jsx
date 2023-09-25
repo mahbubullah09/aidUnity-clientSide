@@ -6,6 +6,7 @@ import {  RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layout/mainLayout";
 import Home from "./component/home";
 import Details from "./component/Details";
+import Donation from "./component/Donation";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -20,7 +21,7 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path:'/Donation',
-        element: <div>donation</div>
+        element: <Donation></Donation>
       },
       {
         path: '/Statistics',

@@ -10,9 +10,9 @@ const SingleCard = ({ card }) => {
     <div className=" cursor-pointer">
       <div style={{ background:card_bg }} className={`card card-compact  shadow-xl  bg-opacity-10`} >
         <figure>
-          <img
+          <img 
             src={picture}
-            alt="Shoes"
+            alt=""
           />
         </figure>
         <div className="card-body">
