@@ -8,16 +8,19 @@ import Home from "./component/home";
 import Details from "./component/Details";
 import Donation from "./component/Donation";
 import Statistic from "./component/statistic";
+import ErrorPage from "./component/ErrorPage";
 
 
 const myCreatRoute = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout> ,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home></Home> ,
+      
         loader: () => fetch('../public/data.json')
       },
       {

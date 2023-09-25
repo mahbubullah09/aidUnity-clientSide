@@ -11,20 +11,32 @@ const Statistic = () => {
     const data= useLoaderData()
     const [donation, setDonation] = useState([]);
 
+
+let totalDonation;
+let myDonation = 0;
+ if (donation){
+    totalDonation= data?.length - donation?.length  ;
+    myDonation = donation.length;
+ } else{
+    totalDonation = data.length - 0
+ }
+   
+    
+
     useEffect(() => {
         const donatesItem = JSON.parse(localStorage.getItem("donate"));
+
         
           setDonation(donatesItem);
+          setDonation(myDonation)
        
-      }, []);
-      console.log(donation.length);
-      const totalDonation= data.length - donation.length  ;
-      const myDonation = donation.length;
+      }, [myDonation]);
+  
 
 
 
 
-    const donationArray = [totalDonation, myDonation ];
+    const donationArray = [totalDonation, donation ];
     console.log(donationArray);
       
    
