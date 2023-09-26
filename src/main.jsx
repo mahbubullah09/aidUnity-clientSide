@@ -8,20 +8,20 @@ import Home from "./component/home";
 import Details from "./component/Details";
 import Donation from "./component/Donation";
 import Statistic from "./component/statistic";
-import ErrorPage from "./component/ErrorPage";
+// import ErrorPage from "./component/ErrorPage";
 
 
 const myCreatRoute = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout> ,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home></Home> ,
       
-        loader: () => fetch('data.json')
+        loader: () => fetch('/data.json')
       },
       {
         path:'/Donation',
@@ -30,12 +30,12 @@ const myCreatRoute = createBrowserRouter([
       {
         path: '/Statistics',
         element: <Statistic></Statistic>,
-        loader: () => fetch('data.json')
+        loader: () => fetch('/data.json')
       },
       {
         path:'/details/:id',
         element:<Details></Details>,
-        loader: () => fetch('data.json')
+        loader: () => fetch('/data.json')
       }
     ],
   },

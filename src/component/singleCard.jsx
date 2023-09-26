@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import propTypes from 'prop-types';
 
 const SingleCard = ({ card }) => {
   const { id, picture, title, category, card_bg, category_bg, text_color } =
@@ -29,5 +30,8 @@ const SingleCard = ({ card }) => {
    </div>
   );
 };
+SingleCard.propTypes = {
+  card: propTypes.array
+}
 
 export default SingleCard;

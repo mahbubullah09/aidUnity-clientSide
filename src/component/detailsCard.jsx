@@ -1,4 +1,4 @@
-import React from "react";
+import propTypes from 'prop-types';
 import swal from "sweetalert";
 
 const DetailsCard = ({ data }) => {
@@ -61,5 +61,8 @@ const DetailsCard = ({ data }) => {
     </div>
   );
 };
+DetailsCard.propTypes = {
+  data: propTypes.object
+}
 
 export default DetailsCard;

@@ -1,4 +1,5 @@
 import { BiDollar} from "react-icons/bi";
+import propTypes from 'prop-types';
 
 const DonationCard = ({ data }) => {
   const { picture, title, category, card_bg, category_bg, text_color, price } =
@@ -41,5 +42,8 @@ const DonationCard = ({ data }) => {
     </div>
   );
 };
+DonationCard.propTypes = {
+data: propTypes.array
+}
 
 export default DonationCard;
