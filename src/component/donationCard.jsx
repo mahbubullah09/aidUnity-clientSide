@@ -16,6 +16,7 @@ const DonationCard = ({ data }) => {
               className="h-full w-full object-cover"
             />
           </div>
+          
           <div className="p-6">
             <div className="card-actions ">
               <h2
@@ -24,9 +25,10 @@ const DonationCard = ({ data }) => {
               >
                 {category}
               </h2>
+
             </div>
             <h2 className={` text-[18px] font-semibold my-2  text-[#0B0B0B]`}>{title}</h2>
-            <div style={{ color: text_color }} className=" flex items-center  font-semibold"> <BiDollar></BiDollar> {price}</div>
+            <div style={{ color: text_color }} className=" flex  items-center  font-semibold"> <BiDollar></BiDollar>{price}</div>
             <div>
               <button
                 style={{ background: text_color }}

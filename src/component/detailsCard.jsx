@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { BiDollar} from "react-icons/bi";
 import swal from "sweetalert";
 
 const DetailsCard = ({ data }) => {
@@ -49,7 +50,7 @@ const DetailsCard = ({ data }) => {
         <img className=" w-full mx-auto" src={picture} alt="" />
         <div className="card-actions bg-black bg-opacity-30 py-4 px-4 absolute  w-full bottom-0">
           <button onClick={handleAddDonate} style={{ backgroundColor: text_color}} className={` text-white py-2 px-4  rounded`}>
-            Donate {price}
+           <div className='flex items-center'> Donate  <div className='flex items-center'><BiDollar></BiDollar>{price}</div></div>
           </button>
         </div>
       </div>

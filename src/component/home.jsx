@@ -40,7 +40,7 @@ const Home = () => {
               <input
                 className="  text-black pl-2 border border-solid border-[#DEDEDE] py-2 rounded-l-lg w-[270px]"
                 type="text"
-                onChange={handleChange}
+                onChange={handleChange} 
                 placeholder="Search here...."
               />
               <button
