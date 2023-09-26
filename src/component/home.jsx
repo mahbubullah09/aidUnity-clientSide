@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <div>
       <div
-        className="hero min-h-[45vh] md:max-w-2xl lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto  "
+        className="hero min-h-[55vh] md:max-w-2xl lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto  "
         style={{
           backgroundImage: "url(https://i.ibb.co/RvcBPW0/banner.jpg)",
         }}
@@ -38,14 +38,14 @@ const Home = () => {
             </h2>
             <div className="mt-4">
               <input
-                className="  text-black pl-2 border border-solid border-[#DEDEDE] py-2 rounded md:rounded-l-lg w-[270px] "
+                className="  text-black pl-2 border border-solid border-[#DEDEDE] py-2 rounded-l-lg w-[270px]"
                 type="text"
                 onChange={handleChange}
                 placeholder="Search here...."
               />
               <button
                 onClick={handleSearch}
-                className=" bg-[#FF444A] text-white py-2 px-4 rounded-r-lg "
+                className="bg-[#FF444A] text-white py-2 px-4 rounded-r-lg"
               >
                 Search
               </button>

@@ -19,7 +19,7 @@ const SingleCard = ({ card }) => {
         <div className="card-actions  ">
             <h2 style={{ backgroundColor:category_bg }} className= {` py-1 px-2 rounded-md font-semibold`}>{category}</h2>
           </div>
-          <h2 style={{color:text_color }} className={`card-title `}>{title}</h2>
+          <h2 style={{color:text_color }} className={` text-lg font-semibold `}>{title}</h2>
           
          
         </div>
