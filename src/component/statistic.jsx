@@ -45,15 +45,12 @@ let myDonation =0;
         <div >
           
            
-            <div className=' my-20  mx-60'>
+            <div className=' md:mx-36 md:my-20 lg:my-20 max-w-[600px]  lg:mx-60'>
                 
                <div>
                <Chart
                 type="pie"
-                width={550}
-                height={550}
-
-                series={ donationArray}                
+               series={ donationArray}                
 
                 options={{
                       

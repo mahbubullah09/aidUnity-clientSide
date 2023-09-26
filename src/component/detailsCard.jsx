@@ -44,7 +44,7 @@ const DetailsCard = ({ data }) => {
 
   }
   return (
-    <div className=" max-w-5xl mx-auto card card-compact my-8">
+    <div className="  card card-compact my-8 mx-4  md:max-w-2xl  lg:max-w-4xl min-[1100px]:max-w-5xl md:mx-auto">
       <div className="relative">
         <img className=" w-full mx-auto" src={picture} alt="" />
         <div className="card-actions bg-black bg-opacity-30 py-4 px-4 absolute  w-full bottom-0">
@@ -55,8 +55,8 @@ const DetailsCard = ({ data }) => {
       </div>
 
       <div >
-        <h4 className=" text-[40px] font-semibold mt-4 ">{title}</h4>
-        <p className="text-[#0B0B0BB2] text-base  my-2">{description}</p>
+        <h4 className=" text-[24px] md:text-[40px] font-semibold mt-4 ">{title}</h4>
+        <p className="text-[#0B0B0BB2] text-sm md:text-base  my-2">{description}</p>
       </div>
     </div>
   );

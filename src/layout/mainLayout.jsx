@@ -8,7 +8,7 @@ const MainLayout = () => {
     <div >
       <section >
         <div className="pt-4  ">
-        <div className=" flex justify-between items-center max-w-5xl mx-auto">
+        <div className=" flex flex-col gap-10 justify-between items-center text-center mb-4 md:mb-0 md:max-w-2xl md:flex-row lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto">
           <img src="https://i.ibb.co/NNGjs82/Logo.png" alt="" />
          <ul className="flex justify-around gap-4 items-center">
             <li>

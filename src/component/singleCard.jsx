@@ -7,7 +7,7 @@ const SingleCard = ({ card }) => {
   return (
    <div>
     <Link to={`/details/${id}`}>
-    <div className=" cursor-pointer ">
+    <div className=" cursor-pointer max-[330px]:mx-4 max-[380px]:mx-6 mx-14 md:mx-0 ">
       <div style={{ background:card_bg,  color:text_color}} className={`card card-compact  shadow-xl  bg-opacity-10`} >
         <figure>
           <img 
