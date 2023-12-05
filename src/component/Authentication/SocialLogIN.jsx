@@ -25,10 +25,10 @@ const SocialLogIn = () => {
            
             
                 console.log(result.data);
-                if (result.data.success) {
+              
                   navigate(location.state ? location.state : "/");
                   toast.success("Successfully login");
-                }
+                
               })
             
 
