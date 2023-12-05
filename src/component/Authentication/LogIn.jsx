@@ -16,6 +16,8 @@ const LogIn = () => {
 
 
  const navigate = useNavigate();
+ console.log(location);
+ console.log(navigate);
 
     const handleData = event =>{
         event.preventDefault();
@@ -24,18 +26,10 @@ const LogIn = () => {
         const password= event.target.password.value;
 
         singin(email,password)
-        .then(result =>{
+         .then(result =>{
           const user = result.user
-          console.log(user)    
-       
-          
-         
-              navigate(location.state ? location.state : '/')
-  
-          
-        
-               
-        
+          console.log(user)
+          navigate(location?.state ? location.state : '/')
         })
         .catch(error => console.log(error))
 

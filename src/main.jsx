@@ -12,6 +12,7 @@ import ErrorPage from "./component/ErrorPage";
 import LogIn from "./component/Authentication/LogIn";
 import AuthProvider from "./component/Provider/AuthProvider";
 import SingUp from "./component/Authentication/SingUp";
+import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -36,7 +37,9 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path:'/Donation',
-        element: <Donation></Donation>
+        element:<PrivateRoute>
+           <Donation/>
+        </PrivateRoute>
       },
       {
         path: '/Statistics',
@@ -45,7 +48,9 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        element:<Details></Details>,
+        element:<PrivateRoute>
+          <Details/>
+        </PrivateRoute>,
         loader: () => fetch('/data.json')
       }
     ],

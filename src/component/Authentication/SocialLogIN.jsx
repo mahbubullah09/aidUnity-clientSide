@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -11,8 +11,11 @@ import Swal from "sweetalert2";
 
 
 const SocialLogIn = () => {
+  
+ const location = useLocation();
    
    const navigate = useNavigate()
+   
 
     const {user, googleLogin} = useContext(AuthContext)
     console.log(user);
