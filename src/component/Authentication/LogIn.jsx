@@ -1,10 +1,11 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
-import img from "../../assets/images/login/login.svg"
+import img from "../../assets/login.svg"
 import SocialLogIN from "./SocialLogIN";
 import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+
 import axios from "axios";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const LogIn = () => {
