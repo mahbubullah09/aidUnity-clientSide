@@ -19,9 +19,9 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const singin = (email,password) =>{
+    const singin = (email,password) => {
         setLoader(true);
-        return signInWithEmailAndPassword(auth,email,password)
+       return signInWithEmailAndPassword(auth, email, password)
     }
     const googleLogin = () =>{
         setLoader(true);

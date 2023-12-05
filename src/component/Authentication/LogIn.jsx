@@ -4,6 +4,8 @@ import img from "../../assets/login.svg"
 import SocialLogIN from "./SocialLogIN";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
+
 
 
 
@@ -11,7 +13,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const LogIn = () => {
  const  {singin} = useContext(AuthContext);
-
  const location = useLocation();
 
 
@@ -31,9 +32,12 @@ const LogIn = () => {
           console.log(user)
           navigate(location?.state ? location.state : '/')
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+          toast.error(error.message)
+        
+        })
 
-        console.log(email,password);
+        
         
 
     }
