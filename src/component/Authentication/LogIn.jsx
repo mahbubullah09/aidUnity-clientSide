@@ -32,11 +32,10 @@ const LogIn = () => {
 
         
           
-            console.log(result.data)
-            if(result.data.success){
+         
               navigate(location.state ? location.state : '/')
   
-            }
+          
         
                
         

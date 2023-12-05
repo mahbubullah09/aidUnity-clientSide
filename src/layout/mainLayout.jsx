@@ -1,10 +1,18 @@
+import { useContext } from "react";
 import { Toaster } from "react-hot-toast";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../component/Provider/AuthProvider";
 
 
 
 
 const MainLayout = () => {
+
+  const {user, logout} = useContext(AuthContext)
+
+  const handleLogout =  () => {
+
+  }
   return (
     <div >
       <section >
@@ -41,6 +49,16 @@ const MainLayout = () => {
           >
            Statistics
           </NavLink>
+            </li>
+            <li>
+             {
+              user? 
+              <button onClick={logout} className="bg-gray-600 py-2 px-4 text-white rounded-md">Logout</button>
+              :
+              <Link to={'login'}>
+              <button className="bg-gray-600 py-2 px-4 text-white rounded-md">Login</button>
+              </Link>
+             }
             </li>
          </ul>
           
