@@ -9,19 +9,30 @@ import Details from "./component/Details";
 import Donation from "./component/Donation";
 import Statistic from "./component/statistic";
 import ErrorPage from "./component/ErrorPage";
+import LogIn from "./component/Authentication/LogIn";
+import AuthProvider from "./component/Provider/AuthProvider";
+import SingUp from "./component/Authentication/SingUp";
 
 
 const myCreatRoute = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout> ,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home></Home> ,
       
         loader: () => fetch('/data.json')
+      },
+      {
+        path: '/login',
+        element:<LogIn/>
+      },
+      {
+        path: '/singup',
+        element:<SingUp/>
       },
       {
         path:'/Donation',
@@ -43,6 +54,8 @@ const myCreatRoute = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+     <AuthProvider>
     <RouterProvider router={myCreatRoute}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

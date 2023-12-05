@@ -3,9 +3,10 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/login.svg"
 import SocialLogIN from "./SocialLogIN";
 import { useContext } from "react";
-
-import axios from "axios";
 import { AuthContext } from "../Provider/AuthProvider";
+
+
+
 
 
 const LogIn = () => {
@@ -27,17 +28,15 @@ const LogIn = () => {
           const user = result.user
           console.log(user)
 
-          const loggeinUser = {email};
+       
 
-          axios.post('http://localhost:5000/jwt' , loggeinUser,{
-            withCredentials: true
-          })
-          .then(res => {
-            console.log(res.data)
-            if(res.data.success){
+        
+          
+            console.log(result.data)
+            if(result.data.success){
               navigate(location.state ? location.state : '/')
   
-            }})
+            }
         
                
         

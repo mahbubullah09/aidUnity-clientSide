@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCgtMIWPevuNNjpy4S0wMY5XFeL12hXgbA",
-  authDomain: "car-doctor-2f426.firebaseapp.com",
-  projectId: "car-doctor-2f426",
-  storageBucket: "car-doctor-2f426.appspot.com",
-  messagingSenderId: "443218651890",
-  appId: "1:443218651890:web:79da6f499733d9f368fe6b"
+  apiKey: "AIzaSyDOCfQ5hkdMgEj1vqJS9a4Xz6DRGNcgpy0",
+  authDomain: "donation-campaign-1091e.firebaseapp.com",
+  projectId: "donation-campaign-1091e",
+  storageBucket: "donation-campaign-1091e.appspot.com",
+  messagingSenderId: "932382649538",
+  appId: "1:932382649538:web:708865352461dc39a49f5b"
 };
 
 // Initialize Firebase
