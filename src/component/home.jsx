@@ -1,19 +1,53 @@
-import { useLoaderData } from "react-router-dom";
 
 import Cards from "./cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./Hooks/usePublic";
+import axios from "axios";
 
 const Home = () => {
-  const cardsData = useLoaderData();
+
+
+
+
+  // const { data: aids = [] } = useQuery({
+  //   queryKey: ["aids"],
+  //   queryFn: async () => {
+  //     const res = await useAxiosPublic.get(`/aids`);
+  //     return res;
+  //   },
+   
+  // });
+
+
+  // const { data = [] } = useQuery({
+  //   queryKey: ["aids",],
+  //   queryFn: async () => {
+  //     const res = await axios.get(`http://localhost:5000/aids`);
+  //     return res.data;
+  //   },
+  // });
+
+
+  // console.log(data);
+const [aids, setAids] =useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/aids')
+    .then(res => res.json())
+    .then(data => setAids(data))
+  },[])
+
   const [filterData, setFilterData] = useState([]);
 
   const [inputText, setinputText] = useState("");
   const [search, isSearch] = useState(false);
   console.log(search);
 
+  const [category, setCategory] =useState([]);
+
   const handleSearch = () => {
     isSearch(true);
-    const searchData = cardsData.filter((data) => data.category == inputText);
+    const searchData = aids.filter((data) => data.category == inputText);
     setFilterData(searchData);
     console.log(searchData);
   };
@@ -56,7 +90,7 @@ const Home = () => {
       {search ? (
         <Cards cardsData={filterData}></Cards>
       ) : (
-        <Cards cardsData={cardsData}></Cards>
+        <Cards cardsData={aids} setCategory={setCategory} category={category}></Cards>
       )}
     </div>
   );

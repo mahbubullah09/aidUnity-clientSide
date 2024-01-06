@@ -9,13 +9,14 @@ const Details = () => {
 
 
     const {id} = useParams();
+    console.log(id);
    
     const details = useLoaderData();
     
 
     useEffect(()=>{
 
-        const findData = details?.find(details=> details.id == id)
+        const findData = details?.find(details=> details._id == id)
         setData(findData)
     },[id, details])
     
