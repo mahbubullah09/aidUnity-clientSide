@@ -2,14 +2,15 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
-import ManageAids from "./ManageAids";
+
 import {
   IoIosArrowDropdownCircle,
   IoIosArrowDropupCircle,
 } from "react-icons/io";
+import { AuthContext } from "../../Provider/AuthProvider";
+import ManageEvent from "./ManageEvent";
 
-const AddAids = () => {
+const AddEvent = () => {
   const { user } = useContext(AuthContext);
   const Email = user?.email;
 
@@ -21,23 +22,22 @@ const AddAids = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { title, category, picture, price, description } = data;
-    const aidsInfo = {
+    const { title, date, description } = data;
+    const eventInfo = {
       title,
-      picture,
-      price,
-      category,
+     
+      date,
       description: description,
     };
-    console.log(aidsInfo);
+    console.log(eventInfo);
     reset();
 
-    fetch(`http://localhost:5000/aids`, {
+    fetch(`http://localhost:5000/event`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(aidsInfo),
+      body: JSON.stringify(eventInfo),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -47,7 +47,7 @@ const AddAids = () => {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Aids added successfully",
+            title: "Event added successfully",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -88,7 +88,7 @@ const AddAids = () => {
         {click ? (
           <div>
             <h3 className="text-4xl font-playfair font-bold text-center mt-8">
-              Add New Aids
+              Add New Event
             </h3>
 
             <div className="w-full">
@@ -114,61 +114,26 @@ const AddAids = () => {
                       </span>
                     )}
                   </div>
+                
                   <div className="form-control w-full ">
                     <label className="label">
                       <span className="label-text">
-                        Image <span className="text-red-600 text-lg">*</span>
+                        Date<span className="text-red-600 text-lg">*</span>
                       </span>
                     </label>
                     <input
-                      type="text"
-                      placeholder="Image"
-                      {...register("picture", {
+                      type="date"
+                      placeholder="date"
+                      {...register("date", {
                         required: true,
                       })}
                       className="h-10 border p-2 w-full "
                     />
                     {errors.externalLink && (
-                      <span className="text-red-600">
-                        image Link is required
-                      </span>
-                    )}
-                  </div>
-                  <div className="form-control w-full ">
-                    <label className="label">
-                      <span className="label-text">
-                        Amount<span className="text-red-600 text-lg">*</span>
-                      </span>
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="Amount"
-                      {...register("price", {
-                        required: true,
-                      })}
-                      className="h-10 border p-2 w-full "
-                    />
-                    {errors.externalLink && (
-                      <span className="text-red-600">Cmount is required</span>
+                      <span className="text-red-600">Date is required</span>
                     )}
                   </div>
 
-                  <div className="form-control w-full ">
-                    <label className="label">
-                      <span className="label-text">
-                        Category <span className="text-red-600 text-lg">*</span>
-                      </span>
-                    </label>
-                    <select {...register("category")}>
-                      <option value="Health">Health</option>
-                      <option value="Education">Education</option>
-                      <option value="Clothing">Clothing</option>
-                      <option value="Food">Food</option>
-                    </select>
-                    {errors.externalLink && (
-                      <span className="text-red-600">Category is required</span>
-                    )}
-                  </div>
 
                   <div className="form-control">
                     <label className="label">
@@ -214,9 +179,9 @@ const AddAids = () => {
           ""
         )}
       </div>
-      <ManageAids />
+      <ManageEvent />
     </div>
   );
 };
 
-export default AddAids;
+export default AddEvent;

@@ -48,6 +48,14 @@ const DashOpt = () => {
                   Manage Aids
                 </p>
               </Link>
+              <Link to={"/manageevents"}>
+                <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+                  <span className="material-icons-outlined float-left pr-2">
+                    group
+                  </span>
+                  Manage Event
+                </p>
+              </Link>
             
             </div>
 

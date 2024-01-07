@@ -18,6 +18,7 @@ import Dashboard from "./component/Dashboard/Dashboard";
 
 import AddAidsDash from "./component/Dashboard/AddTaskDash";
 import UpdateAids from "./component/Dashboard/UpdateAids";
+import EventDash from "./component/Dashboard/manageEvent/EventDash";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -65,6 +66,10 @@ const myCreatRoute = createBrowserRouter([
       {
         path:'/addaids',
         element: <AddAidsDash/>
+      },
+      {
+        path:'/manageevents',
+        element: <EventDash/>
       },
       {
         path:'/updateaids/:id',
