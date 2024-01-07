@@ -32,7 +32,7 @@ const AddEvent = () => {
     console.log(eventInfo);
     reset();
 
-    fetch(`http://localhost:5000/event`, {
+    fetch(`http://localhost:5000/events`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
