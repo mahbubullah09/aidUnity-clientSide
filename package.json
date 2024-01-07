@@ -26,7 +26,8 @@
     "react-router-dom": "^6.16.0",
     "recharts": "^2.8.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.10.1",
+    "timeago-react": "^3.0.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

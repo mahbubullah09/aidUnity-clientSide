@@ -3,6 +3,9 @@ import { AuthContext } from "../component/Provider/AuthProvider";
 import { FaArrowLeft } from "react-icons/fa6";
 import moment from "moment";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../component/Hooks/usePublic";
+import PostsCards from "./PostsCards";
 
 const HelpDesk = () => {
   const { user } = useContext(AuthContext);
@@ -10,6 +13,18 @@ const HelpDesk = () => {
   const time = moment().format("YYYY-MM-DD h:mm:ss a");
   const like =0
   const dislike = 0
+
+  const axiosPublic = useAxiosPublic();
+  const { data: posts = [], refetch } = useQuery({
+    queryKey: ["posts"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/posts`);
+      return res.data;
+    },
+   
+  });
+
+  console.log(posts);
 
   const handlePost = (e) =>{
     e.preventDefault();
@@ -50,6 +65,7 @@ const HelpDesk = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            refetch()
           }
         });
 
@@ -121,6 +137,12 @@ const HelpDesk = () => {
         </form>
         </div>
        }
+
+       <div >
+        {
+            posts.map((data) => <PostsCards key={data?._id} data={data}/>)
+        }
+       </div>
 
        
       </div>
