@@ -13,7 +13,7 @@ const Dashboard = () => {
                 <DashOpt/>
             </div>
 
-            <div className='flex-1'> 
+            <div className> 
                 <Task/>
             </div>
         </div>

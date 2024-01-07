@@ -45,7 +45,7 @@ const DashOpt = () => {
                   <span className="material-icons-outlined float-left pr-2">
                     group
                   </span>
-                  Add Task
+                  Manage Aids
                 </p>
               </Link>
             

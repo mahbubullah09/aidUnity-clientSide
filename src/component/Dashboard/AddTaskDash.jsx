@@ -1,20 +1,20 @@
-import AddTask from './AddTask';
+import AddAids from './AddAids';
 import DashOpt from './DashOpt';
 
-const AddTaskDash = () => {
+const AddAidsDash = () => {
     return (
-        <div className=' lg:grid grid-cols-3'>
+        <div className=' flex  '>
             
 
-            <div className='lg:grid-cols-1'>
+            <div className=''>
                 <DashOpt/>
             </div>
 
-            <div className='lg:grid-cols-2'> 
-                <AddTask/>
+            <div className="flex-1"> 
+                <AddAids/>
             </div>
         </div>
     );
 };
 
-export default AddTaskDash;
+export default AddAidsDash;
