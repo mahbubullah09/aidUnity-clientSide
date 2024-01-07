@@ -4,14 +4,17 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
-import ManageAids from "./ManageAids";
-import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle } from "react-icons/io";
 
-const AddAids = () => {
+
+import { AuthContext } from "../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
+
+const UpdateAids = () => {
   const { user } = useContext(AuthContext);
   const Email = user?.email;
+const data = useLoaderData();
 
+const id = data?._id;
  
 
   const {
@@ -31,59 +34,42 @@ const AddAids = () => {
       description: description,
     };
     console.log(aidsInfo);
-    reset();
+    // reset();
 
-    fetch(`http://localhost:5000/aids`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(aidsInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    fetch(`http://localhost:5000/aids/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(aidsInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
 
-        if (data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Aids added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
+          if (data.modifiedCount > 0) {
+            Swal.fire({
+              icon: "success",
+              title: "Congaratulations",
+              text: "Aids Updated succesfully!",
+            });
+          }
+        });
   };
 
-  const [click, setClick] = useState(false);
+
   return (
     <div className="w-full">
       {/* <Helmet>
         <title>Dashboard | AddProduct</title>
       </Helmet> */}
 
-      <div className="flex justify-between items-center  mt-6">
+  
+      <div>
         
-       <h2 className="text-4xl font-bold">Add New Task</h2>
-      <div>
-      <button
-          onClick={() => {
-            setClick(!click);
-          }}
-          className="py-2 px-4 bg-teal-600 text-white font-bold"
-        >
-          {!click ? <span className="flex items-center gap-2 text-lg">Add AIDS <IoIosArrowDropdownCircle /></span> : <span className="flex items-center gap-2 text-lg">Collaps <IoIosArrowDropupCircle /></span>}
-        </button>
-      </div>
-     
-      </div>
-      <hr className="mt-6" />
-      <div>
-        {click ? (
           <div>
             <h3 className="text-4xl font-playfair font-bold text-center mt-8">
-              Add New Aids
+              Update Aids
             </h3>
 
             <div className="w-full">
@@ -96,6 +82,7 @@ const AddAids = () => {
                       </span>
                     </label>
                     <input
+                    defaultValue={data?.title}
                       type="text"
                       placeholder="Title"
                       {...register("title", {
@@ -116,6 +103,7 @@ const AddAids = () => {
                       </span>
                     </label>
                     <input
+                    defaultValue={data?.picture}
                       type="text"
                       placeholder="Image"
                       {...register("picture", {
@@ -136,6 +124,7 @@ const AddAids = () => {
                       </span>
                     </label>
                     <input
+                    defaultValue={data?.price}
                       type="number"
                       placeholder="Amount"
                       {...register("price", {
@@ -144,7 +133,7 @@ const AddAids = () => {
                       className="h-10 border p-2 w-full "
                     />
                     {errors.externalLink && (
-                      <span className="text-red-600">Cmount is required</span>
+                      <span className="text-red-600">Amount is required</span>
                     )}
                   </div>
 
@@ -155,6 +144,7 @@ const AddAids = () => {
                       </span>
                     </label>
                     <select {...register("category")}>
+                        <option value={data?.category} >{data?.category}</option>
                       <option value="Health">Health</option>
                       <option value="Education">Education</option>
                       <option value="Clothing">Clothing</option>
@@ -180,6 +170,7 @@ const AddAids = () => {
                       })}
                       className="textarea textarea-bordered h-24"
                       placeholder=" Description"
+               defaultValue={data?.description}
                     ></textarea>
                     {errors.description?.type === "required" && (
                       <p className="text-red-600">Password is required</p>
@@ -205,14 +196,12 @@ const AddAids = () => {
               </div>
             </div>
           </div>
-        ) : (
-          ""
-        )}
+        
       </div>
-<ManageAids/>
+
 
     </div>
   );
 };
 
-export default AddAids;
+export default UpdateAids;

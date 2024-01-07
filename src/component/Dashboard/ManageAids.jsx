@@ -84,7 +84,7 @@ const ManageAids = () => {
                 key={aids._id}
                 aids={aids}
                 handleDelete={handleDelete}
-                // handleUpdate ={handleUpdate}
+              
                 
               />
             ))}

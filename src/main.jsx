@@ -17,6 +17,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./component/Dashboard/Dashboard";
 
 import AddAidsDash from "./component/Dashboard/AddTaskDash";
+import UpdateAids from "./component/Dashboard/UpdateAids";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -64,6 +65,11 @@ const myCreatRoute = createBrowserRouter([
       {
         path:'/addaids',
         element: <AddAidsDash/>
+      },
+      {
+        path:'/updateaids/:id',
+        element: <UpdateAids/>,
+        loader: ({params}) => fetch(`http://localhost:5000/aids/${params.id}`)
       }
     ],
   },
