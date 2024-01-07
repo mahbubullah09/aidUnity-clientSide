@@ -20,6 +20,7 @@ import AddAidsDash from "./component/Dashboard/AddTaskDash";
 import UpdateAids from "./component/Dashboard/UpdateAids";
 import EventDash from "./component/Dashboard/manageEvent/EventDash";
 import UpdateEvent from "./component/Dashboard/manageEvent/UpdateEvent";
+import HelpDesk from "./helpDesk/HelpDesk";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -41,6 +42,10 @@ const myCreatRoute = createBrowserRouter([
       {
         path: '/singup',
         element:<SingUp/>
+      },
+      {
+        path: '/helpdesk',
+        element:<HelpDesk/>
       },
       {
         path:'/Donation',
