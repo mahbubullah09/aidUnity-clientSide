@@ -5,8 +5,9 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
-import { AuthContext } from "../Provider/authProvider";
+
 
 const AddTask = () => {
   const { user } = useContext(AuthContext);
@@ -29,33 +30,25 @@ const {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { taskTitle, priority, date, description } = data;
-    const taskInfo = {
-      title: taskTitle,
-      priority: priority,
-      date,
-      Email,
-
+    const { title, category,picture, price, description } = data;
+    const aidsInfo = {
+     title,
+     picture,
+     price,
+      category, 
       description: description,
     };
-    console.log(taskInfo);
+    console.log(aidsInfo);
     reset();
 
-    // const taskInfo ={
-    //     title,
-    //     date,
-    //     priority,
-    //     Email,
-    //     description
-    // }
-    // console.log(taskInfo);
+ 
 
-    fetch(`https://task-canvas-server.vercel.app/tasks`, {
+    fetch(`http://localhost:5000/aids`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(taskInfo),
+      body: JSON.stringify(aidsInfo),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -65,7 +58,7 @@ const {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Task added successfully",
+            title: "Aids added successfully",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -87,13 +80,13 @@ const {
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text">
-                  Task Title <span className="text-red-600 text-lg">*</span>
+                 Title <span className="text-red-600 text-lg">*</span>
                 </span>
               </label>
               <input
                 type="text"
-                placeholder="Task Title"
-                {...register("taskTitle", {
+                placeholder="Title"
+                {...register("title", {
                   required: true,
                 })}
                 className="h-10 border p-2 w-full "
@@ -102,45 +95,61 @@ const {
                 <span className="text-red-600">Task Title is required</span>
               )}
             </div>
-
-      <div className="flex gap-4 justify-center">
-      <div className="form-control w-full ">
+            <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text">
-                  Priority <span className="text-red-600 text-lg">*</span>
+                  Image <span className="text-red-600 text-lg">*</span>
                 </span>
               </label>
               <input
                 type="text"
-                placeholder="Priority"
-                {...register("priority", {
+                placeholder="Image"
+                {...register("picture", {
                   required: true,
                 })}
                 className="h-10 border p-2 w-full "
               />
               {errors.externalLink && (
-                <span className="text-red-600">Priority is required</span>
+                <span className="text-red-600">image Link is required</span>
               )}
             </div>
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text">
-                  Deadline <span className="text-red-600 text-lg">*</span>
+                  Amount<span className="text-red-600 text-lg">*</span>
                 </span>
               </label>
               <input
-                type="date"
-                placeholder="Deadline"
-                {...register("date", {
+                type="number"
+                placeholder="Amount"
+                {...register("price", {
                   required: true,
                 })}
                 className="h-10 border p-2 w-full "
               />
               {errors.externalLink && (
-                <span className="text-red-600">Deadline is required</span>
+                <span className="text-red-600">Cmount is required</span>
               )}
             </div>
-      </div>
+
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">
+                  Category <span className="text-red-600 text-lg">*</span>
+                </span>
+              </label>
+              <select {...register("category")}>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Food">Food</option>
+      </select>
+              {errors.externalLink && (
+                <span className="text-red-600">Category is required</span>
+              )}
+            </div>
+
+ 
 
             <div className="form-control">
               <label className="label">

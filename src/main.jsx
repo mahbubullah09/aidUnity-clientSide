@@ -15,6 +15,7 @@ import SingUp from "./component/Authentication/SingUp";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./component/Dashboard/Dashboard";
+import AddTaskDash from "./component/Dashboard/AddTaskDash";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -58,6 +59,10 @@ const myCreatRoute = createBrowserRouter([
       {
         path:'/dashboard',
         element: <Dashboard/>
+      },
+      {
+        path:'/addaids',
+        element: <AddTaskDash/>
       }
     ],
   },

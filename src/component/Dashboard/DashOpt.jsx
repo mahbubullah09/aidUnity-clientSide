@@ -40,7 +40,7 @@ const DashOpt = () => {
                 </p>
               </Link>
 
-              <Link to={"/addtask"}>
+              <Link to={"/addaids"}>
                 <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
                   <span className="material-icons-outlined float-left pr-2">
                     group
