@@ -5,11 +5,66 @@ import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaCommentAlt } from "react-icons/fa";
 import { AuthContext } from "../component/Provider/AuthProvider";
 import { IoSend } from "react-icons/io5";
+import moment from "moment";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../component/Hooks/usePublic";
+import { useQuery } from "@tanstack/react-query";
 
 const PostsCards = ({ data }) => {
 
     const {user} = useContext(AuthContext)
-    console.log(user);
+const id = data?._id
+console.log(id);
+
+    const axiosPublic = useAxiosPublic();
+
+    const { data: comments = [], refetch } = useQuery({
+      queryKey: ["comments", id],
+      queryFn: async () => {
+        const res = await axiosPublic.get(`/comments/posts?postID=${id}`);
+        return res.data;
+      },
+    });
+    console.log(comments);
+    const time = moment().format("YYYY-MM-DD h:mm:ss a");
+
+    const handleComment = (e) =>{
+        e.preventDefault();
+        const comment = e.target.comment.value;
+        console.log(comment);
+        const commentInfo ={
+            comment,
+            time,
+            userImage : user?.photoURL,
+            userName : user?.displayName,
+            postID: data?._id
+        }
+
+        fetch("http://localhost:5000/comments", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(commentInfo),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+    
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Post added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                
+              }
+            });
+    
+       
+    }
   return (
     <div className="bg-slate-200 p-6 rounded-2xl my-4 space-y-4">
       <div className="flex items-center gap-2 space-y-1">
@@ -50,19 +105,22 @@ const PostsCards = ({ data }) => {
             {" "}
             <FaCommentAlt />
           </button>
-          {data?.dislike}
+          {comments?.length}
         </div>
       </div>
       <hr />
 
-      <div className="flex items-center gap-2 w-full pr-16">
+      <div className="flex items-center gap-2 w-full pr-2 md:pr-16">
         <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
     <div className="w-full">
-    <form action="">
-       <input className="w-full h-8 rounded-full p-2" placeholder="Comment here..." type="text" />
+    <form onSubmit={handleComment} action="">
+       <div className="relative">
+       <input className="w-full h-8 rounded-full p-3 pr-10 " name="comment" placeholder="Comment here..." type="text" />
+       <button type="submit" className="absolute right-3 top-2"><IoSend /></button>
+       </div>
        </form>
     </div>
-       <button><IoSend /></button>
+       
       </div>
     </div>
   );

@@ -69,7 +69,7 @@ const HelpDesk = () => {
           }
         });
 
-    console.log("post");
+ 
     setClicked(false)
   }
 
