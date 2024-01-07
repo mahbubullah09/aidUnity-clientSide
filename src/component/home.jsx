@@ -7,20 +7,21 @@ import axios from "axios";
 
 const Home = () => {
 
+  const axiosPublic = useAxiosPublic();
+  const [search, isSearch] = useState(false);
+  console.log(search);
 
+  const { data: aids = [] } = useQuery({
+    queryKey: ["aids"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/aids`);
+      return res.data;
+    },
+   
+  });
 
 
   // const { data: aids = [] } = useQuery({
-  //   queryKey: ["aids"],
-  //   queryFn: async () => {
-  //     const res = await useAxiosPublic.get(`/aids`);
-  //     return res;
-  //   },
-   
-  // });
-
-
-  // const { data = [] } = useQuery({
   //   queryKey: ["aids",],
   //   queryFn: async () => {
   //     const res = await axios.get(`http://localhost:5000/aids`);
@@ -30,18 +31,17 @@ const Home = () => {
 
 
   // console.log(data);
-const [aids, setAids] =useState([]);
-  useEffect(() => {
-    fetch('http://localhost:5000/aids')
-    .then(res => res.json())
-    .then(data => setAids(data))
-  },[])
+// const [aids, setAids] =useState([]);
+//   useEffect(() => {
+//     fetch('http://localhost:5000/aids')
+//     .then(res => res.json())
+//     .then(data => setAids(data))
+//   },[])
 
   const [filterData, setFilterData] = useState([]);
 
   const [inputText, setinputText] = useState("");
-  const [search, isSearch] = useState(false);
-  console.log(search);
+
 
   const [category, setCategory] =useState([]);
 

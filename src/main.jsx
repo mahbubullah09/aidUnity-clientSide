@@ -14,6 +14,7 @@ import AuthProvider from "./component/Provider/AuthProvider";
 import SingUp from "./component/Authentication/SingUp";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Dashboard from "./component/Dashboard/Dashboard";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -53,17 +54,23 @@ const myCreatRoute = createBrowserRouter([
           <Details/>
         </PrivateRoute>,
         loader: () => fetch('http://localhost:5000/aids')
+      },
+      {
+        path:'/dashboard',
+        element: <Dashboard/>
       }
     ],
   },
 ]);
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-     {/* <QueryClientProvider client={QueryClient}> */}
+     <QueryClientProvider client={queryClient}>
      <AuthProvider>
     <RouterProvider router={myCreatRoute}></RouterProvider>
     </AuthProvider>
-    {/* </QueryClientProvider> */}
+    </QueryClientProvider>
   </React.StrictMode>
 );

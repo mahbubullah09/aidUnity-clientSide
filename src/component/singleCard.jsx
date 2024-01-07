@@ -36,7 +36,7 @@ const SingleCard = ({ card }) => {
         </figure>
         <div className="card-body h-32">
         <div className="card-actions  ">
-            <h2 style={{ backgroundColor:category?.category_bg }} className= {` py-1 px-2 rounded-md font-semibold`}>{category}</h2>
+            <h2 style={{ backgroundColor:category?.category_bg }} className= {` py-1 px-2 rounded-md font-semibold`}>{card?.category}</h2>
           </div>
           <h2 style={{color:category?.text_color }} className={` text-lg font-semibold `}>{title}</h2>
           
