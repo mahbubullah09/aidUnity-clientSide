@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TbClockBolt } from "react-icons/tb";
 import TimeAgo from "timeago-react";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
@@ -9,62 +9,62 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../component/Hooks/usePublic";
 import { useQuery } from "@tanstack/react-query";
+import CommentsCart from "./CommentsCart";
 
 const PostsCards = ({ data }) => {
 
-    const {user} = useContext(AuthContext)
-const id = data?._id
-console.log(id);
+    const [clicked, setClicked] = useState(false)
+  const { user } = useContext(AuthContext);
+  const id = data?._id;
+  console.log(id);
 
-    const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
-    const { data: comments = [], refetch } = useQuery({
-      queryKey: ["comments", id],
-      queryFn: async () => {
-        const res = await axiosPublic.get(`/comments/posts?postID=${id}`);
-        return res.data;
+  const { data: comments = [], refetch } = useQuery({
+    queryKey: ["comments", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/comments/posts?postID=${id}`);
+      return res.data;
+    },
+  });
+  console.log(comments);
+  const time = moment().format("YYYY-MM-DD h:mm:ss a");
+
+  const handleComment = (e) => {
+    e.preventDefault();
+    const comment = e.target.comment.value;
+    console.log(comment);
+    const commentInfo = {
+      comment,
+      time,
+      userImage: user?.photoURL,
+      userName: user?.displayName,
+      postID: data?._id,
+    };
+
+    fetch("http://localhost:5000/comments", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-    });
-    console.log(comments);
-    const time = moment().format("YYYY-MM-DD h:mm:ss a");
+      body: JSON.stringify(commentInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
 
-    const handleComment = (e) =>{
-        e.preventDefault();
-        const comment = e.target.comment.value;
-        console.log(comment);
-        const commentInfo ={
-            comment,
-            time,
-            userImage : user?.photoURL,
-            userName : user?.displayName,
-            postID: data?._id
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Post added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-
-        fetch("http://localhost:5000/comments", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(commentInfo),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-    
-              if (data.insertedId) {
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Post added successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                
-              }
-            });
-    
-       
-    }
+        refetch()
+      });
+  };
   return (
     <div className="bg-slate-200 p-6 rounded-2xl my-4 space-y-4">
       <div className="flex items-center gap-2 space-y-1">
@@ -101,7 +101,7 @@ console.log(id);
           </div>
         </div>
         <div className=" flex items-center gap-2">
-          <button>
+          <button onClick={() => setClicked(!clicked)}>
             {" "}
             <FaCommentAlt />
           </button>
@@ -112,16 +112,30 @@ console.log(id);
 
       <div className="flex items-center gap-2 w-full pr-2 md:pr-16">
         <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
-    <div className="w-full">
-    <form onSubmit={handleComment} action="">
-       <div className="relative">
-       <input className="w-full h-8 rounded-full p-3 pr-10 " name="comment" placeholder="Comment here..." type="text" />
-       <button type="submit" className="absolute right-3 top-2"><IoSend /></button>
-       </div>
-       </form>
-    </div>
-       
+        <div className="w-full">
+          <form onSubmit={handleComment} action="">
+            <div className="relative">
+              <input
+                className="w-full h-8 rounded-full p-3 pr-10 "
+                name="comment"
+                placeholder="Comment here..."
+                type="text"
+              />
+              <button type="submit" className="absolute right-3 top-2">
+                <IoSend />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+
+  { clicked &&
+        <div>
+        {
+            comments?.map((data) => <CommentsCart key={data?._id} data={data}/>)
+        }
+      </div>
+  }
     </div>
   );
 };
