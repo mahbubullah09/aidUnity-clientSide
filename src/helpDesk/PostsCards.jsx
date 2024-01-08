@@ -11,9 +11,8 @@ import useAxiosPublic from "../component/Hooks/usePublic";
 import { useQuery } from "@tanstack/react-query";
 import CommentsCart from "./CommentsCart";
 
-const PostsCards = ({ data }) => {
-
-    const [clicked, setClicked] = useState(false)
+const PostsCards = ({ data , RF}) => {
+  const [clicked, setClicked] = useState(false);
   const { user } = useContext(AuthContext);
   const id = data?._id;
   console.log(id);
@@ -29,11 +28,78 @@ const PostsCards = ({ data }) => {
   });
   console.log(comments);
   const time = moment().format("YYYY-MM-DD h:mm:ss a");
+  const newLike = data?.like + 1;
+  console.log(newLike);
+  const handleLike = () => {
+    const UpdateInfo = {
+      title: data?.title,
+
+      image: data?.image,
+
+      details: data?.details,
+
+      userImage: data?.userImage,
+
+      userName: data?.userName,
+
+      time: data?.time,
+
+      like: newLike,
+
+      dislike: data?.dislike,
+    };
+
+
+
+    fetch(`http://localhost:5000/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(UpdateInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        RF()
+
+    
+      });
+
+      const postInfo = {
+     email: user?.email,
+     postID: id
+    }
+    console.log(postInfo);
+
+    fetch("http://localhost:5000/likes", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(postInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          if (data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Like added successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            refetch()
+          }
+        });
+  };
 
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
-    console.log(comment);
+    e.target.comment.value = "";
     const commentInfo = {
       comment,
       time,
@@ -62,7 +128,7 @@ const PostsCards = ({ data }) => {
             timer: 1500,
           });
         }
-        refetch()
+        refetch();
       });
   };
   return (
@@ -87,7 +153,7 @@ const PostsCards = ({ data }) => {
       <div className="flex justify-between items-center text-4xl">
         <div className="flex gap-4">
           <div className=" flex items-center gap-2">
-            <button>
+            <button onClick={handleLike}>
               {" "}
               <AiOutlineLike />
             </button>
@@ -129,13 +195,13 @@ const PostsCards = ({ data }) => {
         </div>
       </div>
 
-  { clicked &&
+      {clicked && (
         <div>
-        {
-            comments?.map((data) => <CommentsCart key={data?._id} data={data}/>)
-        }
-      </div>
-  }
+          {comments?.map((data) => (
+            <CommentsCart key={data?._id} data={data} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

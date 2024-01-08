@@ -140,7 +140,7 @@ const HelpDesk = () => {
 
        <div >
         {
-            posts.map((data) => <PostsCards key={data?._id} data={data}/>)
+            posts.map((data) => <PostsCards key={data?._id} data={data} RF={refetch}/>)
         }
        </div>
 
