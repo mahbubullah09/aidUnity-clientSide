@@ -61,6 +61,20 @@ const Nav = () => {
                 Statistics
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/events"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " text-[#FF444A] underline font-medium"
+                    : ""
+                }
+              >
+                Events
+              </NavLink>
+            </li>
 
             <li>
               <NavLink

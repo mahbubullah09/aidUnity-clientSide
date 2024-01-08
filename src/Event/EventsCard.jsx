@@ -1,0 +1,94 @@
+import React, { useContext, useEffect, useState } from "react";
+import TimeAgo from "timeago-react";
+import { AuthContext } from "../component/Provider/AuthProvider";
+import Swal from "sweetalert2";
+
+const EventsCard = ({ data , volunteer}) => {
+    const {user} = useContext(AuthContext)
+
+    console.log(volunteer);
+    console.log(data);
+
+    const [request, setRequest] = useState([])
+
+    // useEffect(() => {
+    //     const findData = data?.find((data) => data.id === volunteer?.eventID)
+    //     console.log(findData);
+    // },[volunteer, data])
+
+ 
+
+
+
+    const handleVolunteer =() =>{
+
+        const volunteerInfo ={
+            eventID: data?._id,
+            volunteerName: user?.displayName,
+            volunteerEmail: user?.email,
+            volunteerImage: user?.photoURL,
+            Status: 'pending'
+
+        }
+
+        console.log(volunteerInfo);
+
+        fetch(`http://localhost:5000/volunteer`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(volunteerInfo),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+      
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Volunteet added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
+
+    }
+  return (
+    <div>
+      <div className="my-20">
+        <div className="container bg-gradient-to-r from-indigo-500 to-violet-500 text-white p-8 rounded-lg shadow-lg w-full mx-auto">
+          <div className="text-3xl font-bold mb-4">{data?.title}</div>
+          <div className="text-lg mb-4">
+            Date:
+            <span className="text-yellow-400 font-bold">
+              {data?.date} &#40; <TimeAgo datetime={data?.date}></TimeAgo>&#41;
+            </span>
+          </div>
+          <div className="text-lg mb-4">{data?.description}</div>
+
+      <div>
+        { volunteer?.Status === 'accepted'?
+        <button  className="disabled bg-amber-400 text-black py-2 px-4 font-bold">Your Volunteer request is accepted</button>
+        :
+                <div>
+                {
+                   volunteer?.eventID === data?._id ?
+                   <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
+    
+                   
+                   : <button  className="disabled bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
+                
+                }
+              </div>
+        }
+      </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventsCard;

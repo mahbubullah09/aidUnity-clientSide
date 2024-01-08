@@ -7,10 +7,11 @@ import axios from "axios";
 
 const Home = () => {
 
-  const axiosPublic = useAxiosPublic();
+  
   const [search, isSearch] = useState(false);
   console.log(search);
 
+  const axiosPublic = useAxiosPublic();
   const { data: aids = [] } = useQuery({
     queryKey: ["aids"],
     queryFn: async () => {

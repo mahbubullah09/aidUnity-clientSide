@@ -21,6 +21,7 @@ import UpdateAids from "./component/Dashboard/UpdateAids";
 import EventDash from "./component/Dashboard/manageEvent/EventDash";
 import UpdateEvent from "./component/Dashboard/manageEvent/UpdateEvent";
 import HelpDesk from "./helpDesk/HelpDesk";
+import Events from "./Event/Events";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -46,6 +47,10 @@ const myCreatRoute = createBrowserRouter([
       {
         path: '/helpdesk',
         element:<HelpDesk/>
+      },
+      {
+        path: '/events',
+        element:<Events/>
       },
       {
         path:'/Donation',

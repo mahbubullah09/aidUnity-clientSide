@@ -279,22 +279,25 @@ const PostsCards = ({ data, RF }) => {
         </div>
       </div>
       <div>
+       {
+        data?.userEmail === user?.email &&
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className=" m-1">
-            <BsThreeDots />
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <p onClick={handleDelete}>Delete</p>
-            </li>
-            <li>
-              <p onClick={() => setUpdate(true)}>Update</p>
-            </li>
-          </ul>
+        <div tabIndex={0} role="button" className=" m-1">
+          <BsThreeDots />
         </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <p onClick={handleDelete}>Delete</p>
+          </li>
+          <li>
+            <p onClick={() => setUpdate(true)}>Update</p>
+          </li>
+        </ul>
+      </div>
+       }
       </div>
     </div>
     <div className="space-y-1">
