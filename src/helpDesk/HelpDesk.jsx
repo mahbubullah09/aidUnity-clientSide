@@ -41,7 +41,9 @@ const HelpDesk = () => {
         userName : user?.displayName,
         time,
         like,
-        dislike
+        dislike,
+        userEmail : user?.email
+
 
     }
     console.log(postInfo);
