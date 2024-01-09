@@ -81,20 +81,23 @@ const Nav = () => {
                 HeelpDesk
               </NavLink>
       </ul>
-      <ul className="py-1 relative group">
-      <NavLink
-                to="/dashboard"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? " text-[#FF444A] underline font-medium"
-                    : ""
-                }
-              >
-                Dashboard
-              </NavLink>
-      </ul>
+{
+  user.email ==='admin@aidunity.com' &&
+  <ul className="py-1 relative group">
+  <NavLink
+            to="/dashboard"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? " text-[#FF444A] underline font-medium"
+                : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+  </ul>
+}
       {/* <li>
               {user ? (
                 <button
