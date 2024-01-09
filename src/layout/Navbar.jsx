@@ -37,7 +37,7 @@ const Nav = () => {
                 Donation
               </NavLink>
       </ul>
-      <ul className="py-1 relative group">
+      {/* <ul className="py-1 relative group">
       <NavLink
                 to="/Statistics"
                 className={({ isActive, isPending }) =>
@@ -50,7 +50,7 @@ const Nav = () => {
               >
                 Statistics
               </NavLink>
-      </ul>
+      </ul> */}
 
       <ul className="py-1 relative group">
       <NavLink
@@ -82,7 +82,7 @@ const Nav = () => {
               </NavLink>
       </ul>
 {
-  user.email ==='admin@aidunity.com' &&
+  user?.email ==='admin@aidunity.com' &&
   <ul className="py-1 relative group">
   <NavLink
             to="/dashboard"

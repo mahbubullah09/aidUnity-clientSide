@@ -55,7 +55,7 @@ const {user} = useContext(AuthContext)
       confirmButtonText: "Yes, pay it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/payments", {
+        fetch("https://aid-unity-server.vercel.app/payments", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -137,7 +137,7 @@ const {user} = useContext(AuthContext)
           <div className="form-control mt-6">
             { (
               <button className="btn btn-primary w-full">
-                Pay BDT{data?.price}/-
+                Pay ${data?.price}/-
               </button>
             ) 
             }

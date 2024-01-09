@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
-import {  RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layout/mainLayout";
 import Home from "./component/home";
 import Details from "./component/Details";
@@ -25,102 +25,115 @@ import Events from "./Event/Events";
 import VolunteerDash from "./component/Dashboard/ManageVolunteer/VolunteerDash";
 import VolunteerShow from "./component/Dashboard/ManageVolunteer/VolunteerShow";
 import Payment from "./component/Pyment";
-
+import ManagePayment from "./component/Dashboard/manageEvent/ManagePayment/ManagePayment";
+import PaymentDash from "./component/Dashboard/manageEvent/ManagePayment/PaymentDash";
 
 const myCreatRoute = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout> ,
+    element: <MainLayout></MainLayout>,
     // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home></Home> ,
-      
-        loader: () => fetch('/data.json')
+        element: <Home></Home>,
+
+        loader: () => fetch("/data.json"),
       },
       {
-        path: '/login',
-        element:<LogIn/>
+        path: "/login",
+        element: <LogIn />,
       },
       {
-        path: '/singup',
-        element:<SingUp/>
+        path: "/singup",
+        element: <SingUp />,
       },
       {
-        path: '/helpdesk',
-        element:<HelpDesk/>
+        path: "/helpdesk",
+        element: <HelpDesk />,
       },
       {
-        path: '/events',
-        element:<Events/>
+        path: "/events",
+        element: <Events />,
       },
       {
-        path:'/Donation',
-        element:<PrivateRoute>
-           <Donation/>
-        </PrivateRoute>
+        path: "/Donation",
+        element: (
+          <PrivateRoute>
+            <Donation />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/Statistics',
+        path: "/Statistics",
         element: <Statistic></Statistic>,
-        loader: () => fetch('/data.json')
+        loader: () => fetch("/data.json"),
       },
       {
-        path:'/details/:id',
-        element:<PrivateRoute>
-          <Details/>
-        </PrivateRoute>,
-        loader: () => fetch('https://aid-unity-server.vercel.app/aids')
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://aid-unity-server.vercel.app/aids"),
       },
       {
-        path:'/dashboard',
-        element: <Dashboard/>
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
-        path:'/addaids',
-        element: <AddAidsDash/>
+        path: "/addaids",
+        element: <AddAidsDash />,
       },
       {
-        path:'/manageevents',
-        element: <EventDash/>
+        path: "/manageevents",
+        element: <EventDash />,
       },
       {
-        path:'/managevolunteer',
-        element: <VolunteerDash/>
+        path: "/managevolunteer",
+        element: <VolunteerDash />,
       },
       {
-        path:'/updateaids/:id',
-        element: <UpdateAids/>,
-        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`)
+        path: "/managepayment",
+        element: <PaymentDash />,
       },
       {
-        path:'/payment/:id',
-        element: <Payment/>,
-        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`)
+        path: "/updateaids/:id",
+        element: <UpdateAids />,
+        loader: ({ params }) =>
+          fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`),
       },
       {
-        path:'/updateevents/:id',
-        element: <UpdateEvent/>,
-        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/events/${params.id}`)
+        path: "/payment/:id",
+        element: <Payment />,
+        loader: ({ params }) =>
+          fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`),
       },
       {
-        path:'/volunteers/:id',
-        element: <VolunteerShow/>,
-        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/events/${params.id}`)
-      }
+        path: "/updateevents/:id",
+        element: <UpdateEvent />,
+        loader: ({ params }) =>
+          fetch(`https://aid-unity-server.vercel.app/events/${params.id}`),
+      },
+      {
+        path: "/volunteers/:id",
+        element: <VolunteerShow />,
+        loader: ({ params }) =>
+          fetch(`https://aid-unity-server.vercel.app/events/${params.id}`),
+      },
     ],
   },
 ]);
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-     <QueryClientProvider client={queryClient}>
-     <AuthProvider>
-    <RouterProvider router={myCreatRoute}></RouterProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={myCreatRoute}></RouterProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

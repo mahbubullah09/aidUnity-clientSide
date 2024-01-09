@@ -88,7 +88,7 @@ const LogIn = () => {
                  
                 </div>
 
-                <button type="submit" className="bg-[#FF3811] w-full rounded py-2 text-white font-bold">Sing Up</button>
+                <button type="submit" className="bg-[#FF3811] w-full rounded py-2 text-white font-bold">Login</button>
 
               
 
