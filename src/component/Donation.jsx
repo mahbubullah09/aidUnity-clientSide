@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DonationCard from "./donationCard";
 import useAxiosPublic from "./Hooks/usePublic";
 import { useQuery } from "@tanstack/react-query";
 import { data } from "autoprefixer";
+import { AuthContext } from "./Provider/AuthProvider";
 
 const Donation = () => {
+  const {user} = useContext(AuthContext)
+  const UEmail= user?.email
 
   const [click, isClick] = useState(false);
 
@@ -12,7 +15,7 @@ const Donation = () => {
   const { data: payments = [], refetch } = useQuery({
     queryKey: ["payments"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/payments`);
+      const res = await axiosPublic.get(`/payments/email?email=${UEmail}`);
       return res.data;
     },
    
