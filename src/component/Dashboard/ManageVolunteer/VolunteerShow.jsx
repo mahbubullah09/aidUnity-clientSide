@@ -11,7 +11,7 @@ const VolunteerShow = () => {
     const id = data1?._id
 
     const axiosPublic = useAxiosPublic();
-    const { data: volunteer = [] } = useQuery({
+    const { data: volunteer = [], refetch } = useQuery({
       queryKey: ["volunteer", id],
       queryFn: async () => {
         const res = await axiosPublic.get(`/volunteer/event?eventID=${id}`);
@@ -39,6 +39,7 @@ const VolunteerShow = () => {
                   key={volunteer._id}
                   volunteer={data}
                   data1 ={data1}
+                  refetch={refetch}
 
                 
                 

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const VRow = ({ data1, volunteer }) => {
-  console.log(data1);
+const VRow = ({ data1, volunteer, refetch }) => {
+  console.log('df',data1);
   console.log(volunteer);
 
   const id = volunteer?._id
@@ -38,6 +38,7 @@ const VRow = ({ data1, volunteer }) => {
               title: "Congaratulations",
               text: "Volunteer Updated succesfully!",
             });
+            refetch()
           }
         });
   };
@@ -56,12 +57,21 @@ const VRow = ({ data1, volunteer }) => {
 
       <th>
         <div className="flex flex-col gap-2">
-          <button
-            onClick={handleApprove}
-            className="w-24 bg-[#FF3811] py-2 px-4 rounded text-white"
-          >
-            Approve
-          </button>
+         { volunteer?.Status === 'pending'?
+           <button
+           onClick={handleApprove}
+           className="w-24 bg-[#FF3811] py-2 px-4 rounded text-white"
+         >
+           Approve
+         </button>
+         :
+         <button
+         
+         className="w-24 bg-[#FF3811] py-2 px-4 rounded text-white"
+       >
+         Approved
+       </button>
+         }
         </div>
       </th>
     </tr>

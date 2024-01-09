@@ -23,7 +23,7 @@ const Events = () => {
   const { data: volunteer = [], refetch } = useQuery({
     queryKey: ["volunteer"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/volunteer/email?emailID=${UEmail}`);
+      const res = await axiosPublic.get(`/volunteer/event/email?emailID=${UEmail}`);
       return res.data;
     },
    
