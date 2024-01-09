@@ -1,9 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import useAxiosPublic from '../component/Hooks/usePublic';
 import EventsCard from './EventsCard';
+import { AuthContext } from '../component/Provider/AuthProvider';
 
 const Events = () => {
+
+  const {user} = useContext(AuthContext)
+  const UEmail = user?.email
 
     const axiosPublic = useAxiosPublic();   
   const { data: events = [] } = useQuery({
@@ -16,10 +20,10 @@ const Events = () => {
   });
 
   console.log(events);
-  const { data: volunteer = [] } = useQuery({
+  const { data: volunteer = [], refetch } = useQuery({
     queryKey: ["volunteer"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/volunteer`);
+      const res = await axiosPublic.get(`/volunteer/email?emailID=${UEmail}`);
       return res.data;
     },
    
@@ -29,7 +33,7 @@ const Events = () => {
         <div>
 
             {
-                events.map((data) => <EventsCard key={data?._id} data={data} volunteer={volunteer}/>)
+                events.map((data) => <EventsCard key={data?._id} data={data} volunteer={volunteer} refetch={refetch} />)
             }
 
             

@@ -3,7 +3,7 @@ import TimeAgo from "timeago-react";
 import { AuthContext } from "../component/Provider/AuthProvider";
 import Swal from "sweetalert2";
 
-const EventsCard = ({ data , volunteer}) => {
+const EventsCard = ({ data , volunteer, refetch}) => {
     const {user} = useContext(AuthContext)
 
     console.log(volunteer);
@@ -16,10 +16,10 @@ const EventsCard = ({ data , volunteer}) => {
 
     const [request, setRequest] = useState([])
 
-    // useEffect(() => {
-    //     const findData = data?.find((data) => data._id === volunteer[0]?.eventID)
-    //     console.log(findData);
-    // },[volunteer, data])
+    useEffect(() => {
+        const findData = volunteer?.find((data1) => data1.eventID === data?._id)
+        setRequest(findData);
+    },[volunteer, data])
 
  
 
@@ -57,6 +57,7 @@ const EventsCard = ({ data , volunteer}) => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                refetch()
               }
             });
 
@@ -76,7 +77,7 @@ const EventsCard = ({ data , volunteer}) => {
 
           <div>
             {
-               id === eventID ?
+              !request ?
                <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
 
                :
