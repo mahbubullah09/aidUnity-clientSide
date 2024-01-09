@@ -22,6 +22,8 @@ import EventDash from "./component/Dashboard/manageEvent/EventDash";
 import UpdateEvent from "./component/Dashboard/manageEvent/UpdateEvent";
 import HelpDesk from "./helpDesk/HelpDesk";
 import Events from "./Event/Events";
+import VolunteerDash from "./component/Dashboard/ManageVolunteer/VolunteerDash";
+import VolunteerShow from "./component/Dashboard/ManageVolunteer/VolunteerShow";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -68,7 +70,7 @@ const myCreatRoute = createBrowserRouter([
         element:<PrivateRoute>
           <Details/>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/aids')
+        loader: () => fetch('https://aid-unity-server.vercel.app/aids')
       },
       {
         path:'/dashboard',
@@ -83,14 +85,23 @@ const myCreatRoute = createBrowserRouter([
         element: <EventDash/>
       },
       {
+        path:'/managevolunteer',
+        element: <VolunteerDash/>
+      },
+      {
         path:'/updateaids/:id',
         element: <UpdateAids/>,
-        loader: ({params}) => fetch(`http://localhost:5000/aids/${params.id}`)
+        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`)
       },
       {
         path:'/updateevents/:id',
         element: <UpdateEvent/>,
-        loader: ({params}) => fetch(`http://localhost:5000/events/${params.id}`)
+        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/events/${params.id}`)
+      },
+      {
+        path:'/volunteers/:id',
+        element: <VolunteerShow/>,
+        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/events/${params.id}`)
       }
     ],
   },

@@ -56,6 +56,14 @@ const DashOpt = () => {
                   Manage Event
                 </p>
               </Link>
+              <Link to={"/managevolunteer"}>
+                <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+                  <span className="material-icons-outlined float-left pr-2">
+                    group
+                  </span>
+                  Manage Volunteer
+                </p>
+              </Link>
             
             </div>
 

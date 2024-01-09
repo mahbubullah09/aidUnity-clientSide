@@ -25,7 +25,7 @@ const Home = () => {
   // const { data: aids = [] } = useQuery({
   //   queryKey: ["aids",],
   //   queryFn: async () => {
-  //     const res = await axios.get(`http://localhost:5000/aids`);
+  //     const res = await axios.get(`https://aid-unity-server.vercel.app/aids`);
   //     return res.data;
   //   },
   // });
@@ -34,7 +34,7 @@ const Home = () => {
   // console.log(data);
 // const [aids, setAids] =useState([]);
 //   useEffect(() => {
-//     fetch('http://localhost:5000/aids')
+//     fetch('https://aid-unity-server.vercel.app/aids')
 //     .then(res => res.json())
 //     .then(data => setAids(data))
 //   },[])

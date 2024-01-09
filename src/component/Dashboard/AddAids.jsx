@@ -32,7 +32,7 @@ const AddAids = () => {
     console.log(aidsInfo);
     reset();
 
-    fetch(`http://localhost:5000/aids`, {
+    fetch(`https://aid-unity-server.vercel.app/aids`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

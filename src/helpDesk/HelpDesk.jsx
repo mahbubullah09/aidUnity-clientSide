@@ -48,7 +48,7 @@ const HelpDesk = () => {
     }
     console.log(postInfo);
 
-    fetch("http://localhost:5000/posts", {
+    fetch("https://aid-unity-server.vercel.app/posts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

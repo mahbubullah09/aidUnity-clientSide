@@ -30,7 +30,7 @@ console.log(id);
         }
         console.log(updateInfo);
     
-        fetch(`http://localhost:5000/posts/${id}`, {
+        fetch(`https://aid-unity-server.vercel.app/posts/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

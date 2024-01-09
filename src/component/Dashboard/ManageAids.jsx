@@ -13,7 +13,7 @@ const ManageAids = () => {
   const { user } = useContext(AuthContext);
   const [aids, setaids] = useState([]);
   console.log(aids);
-  const url = `http://localhost:5000/aids`;
+  const url = `https://aid-unity-server.vercel.app/aids`;
 
   useEffect(() => {
     //     axios.get(url, { withCredentials: true }).then((res) => {
@@ -38,7 +38,7 @@ const ManageAids = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/aids/${id}`, {
+        fetch(`https://aid-unity-server.vercel.app/aids/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

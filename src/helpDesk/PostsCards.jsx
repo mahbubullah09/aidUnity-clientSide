@@ -95,7 +95,7 @@ const PostsCards = ({ data, RF }) => {
       dislike: data?.dislike,
     };
 
-    fetch(`http://localhost:5000/posts/${id}`, {
+    fetch(`https://aid-unity-server.vercel.app/posts/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -114,7 +114,7 @@ const PostsCards = ({ data, RF }) => {
     };
     console.log(postInfo);
 
-    fetch("http://localhost:5000/likes", {
+    fetch("https://aid-unity-server.vercel.app/likes", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -157,7 +157,7 @@ const PostsCards = ({ data, RF }) => {
       dislike: newDisike,
     };
 
-    fetch(`http://localhost:5000/posts/${id}`, {
+    fetch(`https://aid-unity-server.vercel.app/posts/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -176,7 +176,7 @@ const PostsCards = ({ data, RF }) => {
     };
     console.log(postInfo);
 
-    fetch("http://localhost:5000/dislikes", {
+    fetch("https://aid-unity-server.vercel.app/dislikes", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -212,7 +212,7 @@ const PostsCards = ({ data, RF }) => {
       postID: data?._id,
     };
 
-    fetch("http://localhost:5000/comments", {
+    fetch("https://aid-unity-server.vercel.app/comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -247,7 +247,7 @@ const PostsCards = ({ data, RF }) => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/posts/${id}`, {
+          fetch(`https://aid-unity-server.vercel.app/posts/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

@@ -35,7 +35,7 @@ const UpdateEvent = () => {
     console.log(eventInfo);
     reset();
 
-    fetch(`http://localhost:5000/events/${id}`, {
+    fetch(`https://aid-unity-server.vercel.app/events/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

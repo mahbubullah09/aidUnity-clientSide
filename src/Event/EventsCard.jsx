@@ -9,10 +9,15 @@ const EventsCard = ({ data , volunteer}) => {
     console.log(volunteer);
     console.log(data);
 
+    const id = data?._id;
+   const eventID = volunteer[0]?.eventID
+
+   console.log(id, eventID);
+
     const [request, setRequest] = useState([])
 
     // useEffect(() => {
-    //     const findData = data?.find((data) => data.id === volunteer?.eventID)
+    //     const findData = data?.find((data) => data._id === volunteer[0]?.eventID)
     //     console.log(findData);
     // },[volunteer, data])
 
@@ -33,7 +38,7 @@ const EventsCard = ({ data , volunteer}) => {
 
         console.log(volunteerInfo);
 
-        fetch(`http://localhost:5000/volunteer`, {
+        fetch(`https://aid-unity-server.vercel.app/volunteer`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -69,22 +74,16 @@ const EventsCard = ({ data , volunteer}) => {
           </div>
           <div className="text-lg mb-4">{data?.description}</div>
 
-      <div>
-        { volunteer?.Status === 'accepted'?
-        <button  className="disabled bg-amber-400 text-black py-2 px-4 font-bold">Your Volunteer request is accepted</button>
-        :
-                <div>
-                {
-                   volunteer?.eventID === data?._id ?
-                   <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
-    
-                   
-                   : <button  className="disabled bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
-                
-                }
-              </div>
-        }
-      </div>
+          <div>
+            {
+               id === eventID ?
+               <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
+
+               :
+               <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
+            
+            }
+          </div>
         </div>
       </div>
     </div>

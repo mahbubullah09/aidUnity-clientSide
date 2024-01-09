@@ -36,7 +36,7 @@ const id = data?._id;
     console.log(aidsInfo);
     // reset();
 
-    fetch(`http://localhost:5000/aids/${id}`, {
+    fetch(`https://aid-unity-server.vercel.app/aids/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

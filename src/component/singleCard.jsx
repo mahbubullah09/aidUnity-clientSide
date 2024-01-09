@@ -14,11 +14,12 @@ const SingleCard = ({ card }) => {
     .then(res => res.json())
     .then(data => setData(data))
   },[])
-  console.log(category);
+  console.log(card?.category);
+  console.log(data);
 
   useEffect(() =>{
-    const filter = data.filter((data) => data.category === card.category)
-    console.log(filter);
+    const filter = data.find((data) => data.category === card.category)
+    setCategory(filter);
     
   },[data, card])
 
