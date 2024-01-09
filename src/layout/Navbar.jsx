@@ -5,22 +5,12 @@ import { AuthContext } from "../component/Provider/AuthProvider";
 const Nav = () => {
   const { user, logout } = useContext(AuthContext);
 
-  const handleLogout = () => {};
-  return (
-    <div>
-      <div className="pt-4  ">
-        <div className=" flex flex-col gap-10 justify-between items-center text-center mb-4 md:mb-0 md:max-w-2xl md:flex-row lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto">
-          <Link to={"/"}>
-            {" "}
-            <img
-              className=" cursor-pointer"
-              src="https://i.ibb.co/NNGjs82/Logo.png"
-              alt=""
-            />
-          </Link>
-          <ul className="flex justify-around gap-4 items-center">
-            <li>
-              <NavLink
+
+  
+  const navLink = (
+    <div className=" gap-2 flex flex-col lg:flex-row ">
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -32,9 +22,9 @@ const Nav = () => {
               >
                 Home
               </NavLink>
-            </li>
-            <li>
-              <NavLink
+      </ul>
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/Donation"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -46,9 +36,9 @@ const Nav = () => {
               >
                 Donation
               </NavLink>
-            </li>
-            <li>
-              <NavLink
+      </ul>
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/Statistics"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -60,9 +50,10 @@ const Nav = () => {
               >
                 Statistics
               </NavLink>
-            </li>
-            <li>
-              <NavLink
+      </ul>
+
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/events"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -74,10 +65,10 @@ const Nav = () => {
               >
                 Events
               </NavLink>
-            </li>
+      </ul>
 
-            <li>
-              <NavLink
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/helpdesk"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -89,9 +80,9 @@ const Nav = () => {
               >
                 HeelpDesk
               </NavLink>
-            </li>
-            <li>
-              <NavLink
+      </ul>
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/dashboard"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -103,8 +94,8 @@ const Nav = () => {
               >
                 Dashboard
               </NavLink>
-            </li>
-            <li>
+      </ul>
+      {/* <li>
               {user ? (
                 <button
                   onClick={logout}
@@ -119,11 +110,106 @@ const Nav = () => {
                   </button>
                 </Link>
               )}
-            </li>
+            </li> */}
+
+     
+    </div>
+  );
+
+
+  const handleLogout = () => {};
+  return (
+    <div>
+    <div className="navbar Montserrat font-semibold  max-w-6xl mx-auto ">
+      <div className="navbar-start ">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
+          >
+            {navLink}
           </ul>
         </div>
+       <Link to={'/'}>
+       <h2 className="bg-[#272770]  text-white rounded-full px-4 py-1 text-center ">
+                {" "}
+                Aid
+                <span className="text-[#ffd900] font-bold text-xl">Unity</span>
+              </h2>
+       </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex    ">
+        <ul className="menu menu-horizontal px-4 "></ul>
+      </div>
+      <div className="navbar-end">
+      <p className="hidden lg:block mr-2">{navLink}</p>
+        
+        {user?.email ? (
+          <div className="cursor-pointer mr-2 flex items-center gap-2">
+            {/* <div className="dropdown dropdown-end ">
+              <label tabIndex={0} className="">
+                <div className="w-10  ">
+                  {user ? (
+                    <img
+                      className="  cursor-pointer rounded-full w-16"
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  ) : (
+                    <div className=" text-4xl">
+                      {" "}
+                   
+                    </div>
+                  )}
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                
+
+                <li>
+                  <a>{user?.displayName}</a>
+                </li>
+                <li>
+                  <a>{user?.email}</a>
+                </li>
+              </ul>
+            </div> */}
+            <div>
+              <button
+                className="  text-sm md:text-base font-semibold hover:bg-bg-[#272770]  bg-[#FF444A] text-white py-1 px-2 md:py-2 md:px-4 rounded-md hover:bg-blue-gray-800"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className=" text-sm md:text-base font-semibold   bg-[#FF444A] text-white py-1 px-2 md:py-2 md:px-4 rounded-md hover:bg-blue-gray-800 ">
+            <Link to={"/login"}>Log In</Link>
+          </div>
+        )}
       </div>
     </div>
+  </div>
   );
 };
 
