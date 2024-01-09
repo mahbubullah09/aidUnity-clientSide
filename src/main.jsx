@@ -24,6 +24,7 @@ import HelpDesk from "./helpDesk/HelpDesk";
 import Events from "./Event/Events";
 import VolunteerDash from "./component/Dashboard/ManageVolunteer/VolunteerDash";
 import VolunteerShow from "./component/Dashboard/ManageVolunteer/VolunteerShow";
+import Payment from "./component/Pyment";
 
 
 const myCreatRoute = createBrowserRouter([
@@ -91,6 +92,11 @@ const myCreatRoute = createBrowserRouter([
       {
         path:'/updateaids/:id',
         element: <UpdateAids/>,
+        loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`)
+      },
+      {
+        path:'/payment/:id',
+        element: <Payment/>,
         loader: ({params}) => fetch(`https://aid-unity-server.vercel.app/aids/${params.id}`)
       },
       {
