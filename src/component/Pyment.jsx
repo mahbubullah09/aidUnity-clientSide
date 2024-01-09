@@ -39,7 +39,8 @@ const {user} = useContext(AuthContext)
       date: new Date(), // convert to utc date. use moment js to
       transactionId: result,
       aid: data?.title,
-      aidID: data?._id
+      aidID: data?._id,
+      aidInfo:data
 
     };
     console.log(payment);
