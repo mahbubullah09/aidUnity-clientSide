@@ -28,7 +28,7 @@ const VolunteerShow = () => {
               <tr>
                 <th>Title</th>              
                 <th>Volunteer Requiest</th>
-                <th>Edit/Delete</th>
+                <th>Approval</th>
               </tr>
             </thead>
             <tbody>

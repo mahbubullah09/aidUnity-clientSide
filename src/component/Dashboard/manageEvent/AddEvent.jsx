@@ -73,7 +73,7 @@ const AddEvent = () => {
           >
             {!click ? (
               <span className="flex items-center gap-2 text-lg">
-                Add AIDS <IoIosArrowDropdownCircle />
+                Add Events <IoIosArrowDropdownCircle />
               </span>
             ) : (
               <span className="flex items-center gap-2 text-lg">

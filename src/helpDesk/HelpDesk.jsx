@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../component/Hooks/usePublic";
 import PostsCards from "./PostsCards";
+import toast from "react-hot-toast";
 
 const HelpDesk = () => {
   const { user } = useContext(AuthContext);
@@ -60,13 +61,7 @@ const HelpDesk = () => {
           console.log(data);
 
           if (data.insertedId) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Post added successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+         toast.success('Post added successfully')
             refetch()
           }
         });

@@ -80,7 +80,7 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PaymentDash />,
       },
       {
         path: "/addaids",

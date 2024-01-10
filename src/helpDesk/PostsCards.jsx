@@ -17,6 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import CommentsCart from "./CommentsCart";
 import { BsThreeDots } from "react-icons/bs";
 import UpdatePost from "./UpdatePost";
+import toast from "react-hot-toast";
 
 const PostsCards = ({ data, RF }) => {
   const [clicked, setClicked] = useState(false);
@@ -126,13 +127,7 @@ const PostsCards = ({ data, RF }) => {
         console.log(data);
 
         if (data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Like added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+        
           LRF();
         }
       });
@@ -188,13 +183,7 @@ const PostsCards = ({ data, RF }) => {
         console.log(data);
 
         if (data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Like added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+    
           DRF();
         }
       });
@@ -224,13 +213,7 @@ const PostsCards = ({ data, RF }) => {
         console.log(data);
 
         if (data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Post added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success('Comment added successfully')
         }
         refetch();
       });

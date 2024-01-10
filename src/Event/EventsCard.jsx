@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import TimeAgo from "timeago-react";
 import { AuthContext } from "../component/Provider/AuthProvider";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const EventsCard = ({ data , volunteer, refetch}) => {
     const {user} = useContext(AuthContext)
@@ -59,13 +60,7 @@ const EventsCard = ({ data , volunteer, refetch}) => {
               console.log(data);
       
               if (data.insertedId) {
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Volunteet added successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+                toast.success('Request for volunteer')
                 refetch()
               }
             });
