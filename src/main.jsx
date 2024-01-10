@@ -50,11 +50,15 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path: "/helpdesk",
-        element: <HelpDesk />,
+        element: <PrivateRoute>
+          <HelpDesk />,
+        </PrivateRoute>
       },
       {
         path: "/events",
-        element: <Events />,
+        element: <PrivateRoute>
+          <Events />,
+        </PrivateRoute>
       },
       {
         path: "/Donation",
