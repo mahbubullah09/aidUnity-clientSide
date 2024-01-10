@@ -17,9 +17,18 @@ const EventsCard = ({ data , volunteer, refetch}) => {
     const [request, setRequest] = useState([])
 
     useEffect(() => {
-        const findData = volunteer?.find((data1) => data1.eventID === data?._id)
+        const findData = volunteer?.filter((data1) => data1.eventID === data?._id)
         setRequest(findData);
     },[volunteer, data])
+    console.log(request);
+
+    const [requested, setRequested] = useState([])
+    useEffect(() => {
+        const findVolunteer = request?.find((data1) => data1.volunteerEmail === user?.email)
+        setRequested(findVolunteer);
+        console.log('ghweurgh',findVolunteer);
+    },[request,user])
+    console.log(requested);
 
  
 
@@ -77,11 +86,18 @@ const EventsCard = ({ data , volunteer, refetch}) => {
 
           <div>
             {
-              !request ?
+              !requested ?
                <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
 
                :
-               <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
+              <div>
+                {
+                  requested?.Status === 'pending' ?
+                  <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
+                  : 
+                  <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Request accept</button>
+                }
+              </div>
             
             }
           </div>

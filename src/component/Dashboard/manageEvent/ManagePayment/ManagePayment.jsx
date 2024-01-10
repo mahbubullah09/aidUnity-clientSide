@@ -34,7 +34,6 @@ useEffect(()=> {
         setTotalAmount(sum);
 },[payments])
 
-console.log(totalAmpunt);
 
 
 
