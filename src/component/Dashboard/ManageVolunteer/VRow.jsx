@@ -36,7 +36,7 @@ const VRow = ({ data1, volunteer, refetch }) => {
             Swal.fire({
               icon: "success",
               title: "Congaratulations",
-              text: "Volunteer Updated succesfully!",
+              text: "Volunteer Accepted!",
             });
             refetch()
           }
