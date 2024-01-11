@@ -27,6 +27,7 @@ import VolunteerShow from "./component/Dashboard/ManageVolunteer/VolunteerShow";
 import Payment from "./component/Pyment";
 import ManagePayment from "./component/Dashboard/manageEvent/ManagePayment/ManagePayment";
 import PaymentDash from "./component/Dashboard/manageEvent/ManagePayment/PaymentDash";
+import Contact from "./component/Contact";
 
 const myCreatRoute = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const myCreatRoute = createBrowserRouter([
       {
         path: "/singup",
         element: <SingUp />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/helpdesk",

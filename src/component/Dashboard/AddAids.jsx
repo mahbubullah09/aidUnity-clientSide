@@ -63,7 +63,7 @@ const AddAids = () => {
       </Helmet> */}
 
       <div className="flex justify-between items-center  mt-6">
-        <h2 className="text-4xl font-bold">Add New Task</h2>
+        <h2 className="text-4xl font-bold">Manage Aids</h2>
         <div>
           <button
             onClick={() => {
