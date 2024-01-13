@@ -73,11 +73,7 @@ const myCreatRoute = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/Statistics",
-        element: <Statistic></Statistic>,
-        loader: () => fetch("/data.json"),
-      },
+
       {
         path: "/details/:id",
         element: (
