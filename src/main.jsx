@@ -85,7 +85,9 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <PaymentDash />,
+        element: <PrivateRoute>
+          <PaymentDash />
+        </PrivateRoute>,
       },
       {
         path: "/addaids",
