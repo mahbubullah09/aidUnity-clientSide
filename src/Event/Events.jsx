@@ -19,7 +19,7 @@ const Events = () => {
    
   });
 
-  console.log(events);
+
   const { data: volunteer = [], refetch } = useQuery({
     queryKey: ["volunteer"],
     queryFn: async () => {
@@ -28,7 +28,7 @@ const Events = () => {
     },
    
   });
-  console.log(volunteer);
+
     return (
         <div>
 
