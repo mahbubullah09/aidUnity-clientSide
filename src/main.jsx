@@ -91,7 +91,9 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path: "/addaids",
-        element: <AddAidsDash />,
+        element: <PrivateRoute>
+          <AddAidsDash />
+        </PrivateRoute>,
       },
       {
         path: "/manageevents",
