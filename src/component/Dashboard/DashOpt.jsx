@@ -127,26 +127,43 @@ const DashOpt = () => {
           </div>
 
           <div className="w-48 mx-2 mt-2 ">
-            <div className=" rounded-xl shadow-lg mb-6 px-6 py-4 bg-orange-200   ">
-            <Link to={"/dashboard"}>
-                <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
-                  <span className="material-icons-outlined float-left pr-2">
-                    bar_chart
-                  </span>
-                  Tasks
-                </p>
-              </Link>
+          <div className=" rounded-xl shadow-lg mb-6 px-6 py-4 bg-orange-200  ">
+           
 
-              <Link to={"/addtask"}>
-                <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
-                  <span className="material-icons-outlined float-left pr-2">
-                    group
-                  </span>
-                  Add Task
-                </p>
-              </Link>
-              
-            </div>
+           <Link to={"/addaids"}>
+             <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+               <span className="material-icons-outlined float-left pr-2">
+                 group
+               </span>
+               Manage Aids
+             </p>
+           </Link>
+           <Link to={"/manageevents"}>
+             <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+               <span className="material-icons-outlined float-left pr-2">
+                 group
+               </span>
+               Manage Event
+             </p>
+           </Link>
+           <Link to={"/managevolunteer"}>
+             <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+               <span className="material-icons-outlined float-left pr-2">
+                 group
+               </span>
+               Manage Volunteer
+             </p>
+           </Link>
+           <Link to={"/managepayment"}>
+             <p className="inline-block text-gray-600 hover:text-black my-4 w-full">
+               <span className="material-icons-outlined float-left pr-2">
+                 group
+               </span>
+               Manage Payment
+             </p>
+           </Link>
+         
+         </div>
 
             <div className="bg-orange-200 rounded-xl shadow-lg mb-6 px-6 py-4">
               <Link to={"/"}>
