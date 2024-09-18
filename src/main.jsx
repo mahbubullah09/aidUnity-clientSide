@@ -27,6 +27,7 @@ import VolunteerShow from "./component/Dashboard/ManageVolunteer/VolunteerShow";
 import Payment from "./component/Pyment";
 import ManagePayment from "./component/Dashboard/manageEvent/ManagePayment/ManagePayment";
 import PaymentDash from "./component/Dashboard/manageEvent/ManagePayment/PaymentDash";
+import Contact from "./component/Contact";
 
 const myCreatRoute = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const myCreatRoute = createBrowserRouter([
         element: <SingUp />,
       },
       {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
         path: "/helpdesk",
         element: <PrivateRoute>
           <HelpDesk />,
@@ -68,11 +73,7 @@ const myCreatRoute = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/Statistics",
-        element: <Statistic></Statistic>,
-        loader: () => fetch("/data.json"),
-      },
+
       {
         path: "/details/:id",
         element: (
@@ -84,11 +85,15 @@ const myCreatRoute = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <PaymentDash />,
+        element: <PrivateRoute>
+          <PaymentDash />
+        </PrivateRoute>,
       },
       {
         path: "/addaids",
-        element: <AddAidsDash />,
+        element: <PrivateRoute>
+          <AddAidsDash />
+        </PrivateRoute>,
       },
       {
         path: "/manageevents",

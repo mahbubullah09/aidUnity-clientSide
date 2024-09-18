@@ -3,69 +3,73 @@ import TimeAgo from "timeago-react";
 import { AuthContext } from "../component/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import moment from "moment";
 
-const EventsCard = ({ data , volunteer, refetch}) => {
-    const {user} = useContext(AuthContext)
-
-    console.log(volunteer);
-    console.log(data);
-
-    const id = data?._id;
-   const eventID = volunteer[0]?.eventID
-
-   console.log(id, eventID);
-
-    const [request, setRequest] = useState([])
-
-    useEffect(() => {
-        const findData = volunteer?.filter((data1) => data1.eventID === data?._id)
-        setRequest(findData);
-    },[volunteer, data])
-    console.log(request);
-
-    const [requested, setRequested] = useState([])
-    useEffect(() => {
-        const findVolunteer = request?.find((data1) => data1.volunteerEmail === user?.email)
-        setRequested(findVolunteer);
-        console.log('ghweurgh',findVolunteer);
-    },[request,user])
-    console.log(requested);
-
- 
+const EventsCard = ({ data, volunteer, refetch }) => {
+  const { user } = useContext(AuthContext);
 
 
 
-    const handleVolunteer =() =>{
+  const id = data?._id;
+  const eventID = volunteer[0]?.eventID;
 
-        const volunteerInfo ={
-            eventID: data?._id,
-            volunteerName: user?.displayName,
-            volunteerEmail: user?.email,
-            volunteerImage: user?.photoURL,
-            Status: 'pending'
 
+
+  const [request, setRequest] = useState([]);
+
+  useEffect(() => {
+    const findData = volunteer?.filter((data1) => data1.eventID === data?._id);
+    setRequest(findData);
+  }, [volunteer, data]);
+
+
+  const [requested, setRequested] = useState([]);
+  useEffect(() => {
+    const findVolunteer = request?.find(
+      (data1) => data1.volunteerEmail === user?.email
+    );
+    setRequested(findVolunteer);
+
+  }, [request, user]);
+
+
+  const Today = moment().format("YYYY-MM-DD ");
+
+  const [valid, setValid] = useState([]);
+  useEffect(() => {
+    const find = Today < data?.date;
+
+    setValid(find);
+  }, [Today, data]);
+
+  const handleVolunteer = () => {
+    const volunteerInfo = {
+      eventID: data?._id,
+      volunteerName: user?.displayName,
+      volunteerEmail: user?.email,
+      volunteerImage: user?.photoURL,
+      Status: "pending",
+    };
+
+    console.log(volunteerInfo);
+
+    fetch(`https://aid-unity-server.vercel.app/volunteer`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(volunteerInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.insertedId) {
+          toast.success("Request for volunteer");
+          refetch();
         }
-
-        console.log(volunteerInfo);
-
-        fetch(`https://aid-unity-server.vercel.app/volunteer`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(volunteerInfo),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-      
-              if (data.insertedId) {
-                toast.success('Request for volunteer')
-                refetch()
-              }
-            });
-
-    }
+      });
+  };
   return (
     <div>
       <div className="my-20">
@@ -79,23 +83,34 @@ const EventsCard = ({ data , volunteer, refetch}) => {
           </div>
           <div className="text-lg mb-4">{data?.description}</div>
 
-          <div>
-            {
-              !requested ?
-               <button onClick={handleVolunteer} className="bg-amber-400 text-black py-2 px-4 font-bold">Request for Volunteer</button>
-
-               :
-              <div>
-                {
-                  requested?.Status === 'pending' ?
-                  <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Requested for Volunteer</button>
-                  : 
-                  <button  className="bg-amber-400 text-black py-2 px-4 font-bold">Request accept</button>
-                }
-              </div>
-            
-            }
-          </div>
+          {valid ? (
+            <div>
+              {!requested ? (
+                <button
+                  onClick={handleVolunteer}
+                  className="bg-amber-400 text-black py-2 px-4 font-bold"
+                >
+                  Request for Volunteer
+                </button>
+              ) : (
+                <div>
+                  {requested?.Status === "pending" ? (
+                    <button className="bg-amber-400 text-black py-2 px-4 font-bold">
+                      Requested for Volunteer
+                    </button>
+                  ) : (
+                    <button className="bg-amber-400 text-black py-2 px-4 font-bold">
+                      Request accept
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            <button className="bg-slate-600 disabled text-black py-2 px-4 font-bold">
+              Event expire
+            </button>
+          )}
         </div>
       </div>
     </div>

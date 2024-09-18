@@ -76,7 +76,7 @@ const Home = () => {
                 className="  text-black pl-2 border border-solid border-[#DEDEDE] py-2 rounded-l-lg w-[270px]"
                 type="text"
                 onChange={handleChange} 
-                placeholder="Search here...."
+                placeholder="Search by category"
               />
               <button
                 onClick={handleSearch}

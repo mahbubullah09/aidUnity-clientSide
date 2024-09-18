@@ -27,6 +27,20 @@ const Nav = () => {
       </ul>
       <ul className="py-1 relative group">
       <NavLink
+                to="/contact"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " text-[#FF444A] underline text-lg font-medium "
+                    : ""
+                }
+              >
+                Contact Us
+              </NavLink>
+      </ul>
+      <ul className="py-1 relative group">
+      <NavLink
                 to="/Donation"
                 className={({ isActive, isPending }) =>
                   isPending
