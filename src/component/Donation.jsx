@@ -2,12 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import DonationCard from "./donationCard";
 import useAxiosPublic from "./Hooks/usePublic";
 import { useQuery } from "@tanstack/react-query";
-import { data } from "autoprefixer";
 import { AuthContext } from "./Provider/AuthProvider";
 
 const Donation = () => {
-  const {user} = useContext(AuthContext)
-  const UEmail= user?.email
+  const { user } = useContext(AuthContext);
+  const UEmail = user?.email;
 
   const [click, isClick] = useState(false);
 
@@ -18,17 +17,15 @@ const Donation = () => {
       const res = await axiosPublic.get(`/payments/email?email=${UEmail}`);
       return res.data;
     },
-   
   });
+
   console.log(payments);
 
-
-
   return (
-    <div className="my-8 md:max-w-2xl  lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto">
-      {!payments ? (
-        <div className="  text-center h-screen my-60">
-          <p className="   text-6xl font-bold">{noData}</p>
+    <div className="my-8 md:max-w-2xl lg:max-w-4xl min-[1100px]:max-w-5xl mx-auto">
+      {!payments.length ? (
+        <div className="text-center h-screen my-60">
+          <p className="text-6xl font-bold">No Data Available</p>
         </div>
       ) : (
         <div>
@@ -43,25 +40,20 @@ const Donation = () => {
                     <DonationCard key={data._id} data={data}></DonationCard>
                   ))}
           </div>
-          {
-            data.length > 4 ? <div
-            className="text-center my-10"
-            >
-            <button
-              onClick={() => isClick(true)}
-              className={
-                click
-                  ? " hidden"
-                  : " rounded bg-[#009444] text-white py-2 px-4  mx-auto "
-              }
-            >
-              Show all
-            </button>
-          </div> 
-
-          : ''
-
-          }
+          {payments.length > 6 && (
+            <div className="text-center my-10">
+              <button
+                onClick={() => isClick(true)}
+                className={
+                  click
+                    ? "hidden"
+                    : "rounded bg-[#009444] text-white py-2 px-4 mx-auto"
+                }
+              >
+                Show all
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

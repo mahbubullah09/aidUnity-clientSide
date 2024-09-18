@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../component/Provider/AuthProvider";
 
+
 const Nav = () => {
   const { user, logout } = useContext(AuthContext);
+
 
 
   
@@ -120,7 +122,7 @@ const Nav = () => {
   );
 
 
-  const handleLogout = () => {};
+  
   return (
     <div>
     <div className="navbar Montserrat font-semibold  max-w-6xl mx-auto ">

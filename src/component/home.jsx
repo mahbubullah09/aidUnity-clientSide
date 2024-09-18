@@ -65,8 +65,8 @@ const Home = () => {
           backgroundImage: "url(https://i.ibb.co/RvcBPW0/banner.jpg)",
         }}
       >
-        <div className="hero-overlay bg-[#FFFFFFF2] bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+
+<div className="hero-content text-center text-neutral-content bg-transparent backdrop-blur-lg rounded-lg ">
           <div className=" text-center  ">
             <h2 className="text-4xl text-[#0B0B0B] font-semibold">
               I Grow By Helping People In Need
